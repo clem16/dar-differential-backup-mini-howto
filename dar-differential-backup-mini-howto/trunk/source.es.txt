@@ -168,17 +168,18 @@ La estrategia de copias de seguridad
    copias de seguridad de mi música, porque tengo todos los CDs
    originales y scripts para recomprimirlos en formato ogg.
 
-   From the 3.8 GB I want to backup, usually between 1.3 and 1.5 GB
-   are always empty.  I will split logically the used 2.3 GB into
-   *system* and *home directories* (at the moment of writing this
-   my home is 588 MB). The reason for this split is that as a normal
-   user, I can only change my home directory and other files from
-   the partitions I won't be backing up. Meanwhile the *system*
-   part of the partition remains pretty stable and unmodified
-   because I rarely (un)install software. In fact, from my *home*
-   directory the only things changing usually will be my ``Mail``
-   folder and ``projects``, where I put documents like this one
-   and other software I write/hack.
+   De las 3.8 GB que quiero hacer copia de seguridad, normalmente
+   entre 1.3 y 1.5 GB están vacías. Repartiré las 2.3 GB usadas
+   a nivel lógico entre directorios de *sistema* y *home* (en el
+   momento de escribir esto, mi home ocupa 588 MB). La razón de
+   esta separacio es que como usuario normal sólo puedo cambiar
+   cosas en mi directorio home y otros ficheros de las particiones
+   que no hago copias de seguridad.  Mientras, la parte *sistema*
+   de la partición es bastante estable y no se modifica porque
+   (des)instalo software muy de vez en cuando.  De hecho, de mi
+   directorio *home* las únicas cosas que cambian normalmente
+   son mis directorios ``Mail`` y ``projects``, donde pongo este
+   documento y otro software que escribo/hackeo.
 
    The basic distinction between *home directories* and *system*
    can be useful in organizations too. If you work for a university,
