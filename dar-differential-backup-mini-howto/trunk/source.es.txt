@@ -195,15 +195,15 @@ La estrategia de copias de seguridad
    el directorio home exportado es algo que pueden ignorar dado
    que será realizado en el servidor.
 
-   Once you've decided what to backup, you want to decide how
-   to configure DAR_ for the backups. You can use switches or
-   configuration files. Switches are OK when you don't have many
-   options. Configuration files are better when you want to make
-   different complex inclusion/exclusion rules of what files you want
-   to backup, and more importantly, you can use comments to document
-   the switch, stating for example the reason why you included this
-   or that directory. This can be useful if you come back several
-   months later and you wonder why all those options are there.
+   Una vez haya decidido qué quiere guardar en su copia de seguridad,
+   debe decidir cómo configurar DAR_. Puede usar parámetros o
+   ficheros de configuración. Los parámetros están bien cuando no
+   tiene muchas opciones. Los ficheros de configuración son mejores
+   cuando quiere añadir complejas reglas de inclusión/exclusión de
+   ficheros, y además, puede usar comentarios para documentar los
+   parámetros, indicando por ejemplo la razón por la que incluye
+   tal o cual directorio. Esto puede ser útil si vuelve dentro de
+   unos meses y se pregunta qué hacen todas estas opciones.
 
    For my setup, I'll be running the DAR_ commands inside shell
    scripts called periodically by cron (`Setting up some scripts
