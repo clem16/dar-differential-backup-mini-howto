@@ -451,10 +451,11 @@ Configurando algunos scripts para automatizar el proceso
      seguridad. La salida se pasa por una tubería al siguiente
      comando.
 
-   * By default ``ls`` displays files alphabetically. ``tail``
-     is used to get the last file with the ``-n 1`` switch, which
-     says to display only the last line. Again, the last filename
-     is piped to the next command.
+   * Por defecto ``ls`` muestra los ficheros en orden alfabético.
+     Usamos ``tail`` para obtener el último fichero con el parámetro
+     ``-n 1``, el cual hace que sólo se muestre la última línea.
+     De nuevo, el último nombre de fichero es enviado por tubería
+     al siguiente comando.
 
    * DAR_ wants to operate on filenames without slice number and
      extension. This means that if we don't get rid of the tail,
