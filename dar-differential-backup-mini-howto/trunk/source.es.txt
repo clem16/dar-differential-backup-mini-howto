@@ -129,7 +129,7 @@ Uso simple de DAR
 
       $ mkdir temp
       $ cd temp
-      $ dar -x ../my_backup_file
+      $ dar -x ../mi_copia
       file ownership will not be restored as dar is not run as root.
       to avoid this message use -O option [return = OK | esc = cancel]
       Continuing...
@@ -287,14 +287,14 @@ Copia de seguridad completa con DAR
 
          echo "La fecha de hoy es `date -I`"
 
-   * ``-Z file_pattern``
+   * ``-Z patrón_fichero``
       Usando las reglas normales de metacarácteres en ficheros puede
       especificar patrones de ficheros que quiere almacenar en la
       copia de seguridad sin compresión. Esto sólo tiene sentido
       si usa el parámetro ``-y``. Comprimir ficheros comprimidos
       únicamente crea ficheros mayores y malgasta tiempo de la CPU.
 
-   * ``-P relative_path``
+   * ``-P ruta_relativa``
       Con este parámetro le dice a DAR_ qué rutas no quiere
       almacenar en su copia de seguridad. Aquí posiblemente quiere
       poner el directorio home (soy el único usuario de la máquina,
@@ -334,25 +334,25 @@ Haciendo copias de seguridad diferenciales con DAR
       dar -m 256 -y -s 600M -D -R / -c `date -I`_diff -Z "*.gz" \
          -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
          -P mnt -P dev/pts -P proc -P floppy -P burner -P cdrom \
-         -A previous_backup
+         -A copia_previa
 
    * ``-c `date -I`_diff``
-      I only change the name of the file, cosmetic purpose.
+      Sólo cambio el nombre del fichero, por razones cosméticas.
 
-   * ``-A previous_backup``
-      This new switch is used to tell DAR_ where is to be found
-      the previous backup so it can create a differential backup
-      instead of a full backup. The only thing you have to take
-      care of is that you don't specify slice neither extension in
-      the file name, otherwise DAR_ will make you an interactive
-      question at the command line.
+   * ``-A copia_previa``
+      Este nuevo parámetro se usa para decirle a DAR_ dónde puede
+      encontrar la copia de seguridad anterior para que pueda
+      crear una copia de seguridad diferencial en lugar de una
+      completa.  La única cosa con la que debe tener cuidado es no
+      especificar ni trozo ni extensión en el nombre del fichero,
+      de lo contrario DAR_ le realizará una pregunta interactiva
+      en la línea de comando.
 
-   The user command line is exactly the same. Here it is for
-   completeness::
+   La línea de comando de usuario es exáctamente igual. Aquí está::
 
       dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_diff \
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
-         -P instalacion_manual -P Mail/mail_pa_leer -A previous_backup
+         -P instalacion_manual -P Mail/mail_pa_leer -A copia_previa
 
    DAR_ has another nice feature we don't use here:
    *catalogues*. When you create a backup archive with DAR_,
