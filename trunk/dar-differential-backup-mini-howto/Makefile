@@ -12,7 +12,7 @@ $(NAME).%.html: source.%.txt
 	$(FORMATTER) $(FORMATTER_OPTIONS) $< > $@
 
 clean:
-	$(RM) -f $(NAME).??.html *.bak *.bz2
+	$(RM) -f $(NAME).*.html *.bak *.bz2
 
 VERSION = $(shell grep Revision source.en.txt | awk '{print $$3}')
 BASENAME = $(NAME)-$(VERSION)
@@ -28,4 +28,4 @@ dist: all
 	mv dist $(BASENAME)
 	arcdir -t tar.bz2 $(BASENAME)
 	$(RM) -fR $(BASENAME)
-	mv $(NAME).??.html $(BASENAME).tar.bz2 ~/web/sdf/textos/
+	mv $(NAME).*.html $(BASENAME).tar.bz2 ~/web/sdf/textos/
