@@ -411,21 +411,24 @@ Configurando algunos scripts para automatizar el proceso
      como root y guardar los binarios donde los crée para que nadie
      pueda tocarlos.  Y también ejecutar Tripwire_ sobre ellos.
 
-   * DAR_ generates statistics after each run. We don't want them
-     in our cron because it will generate unnecessary mail. Only
-     ``stdout`` is redirected to ``/dev/null``. Errors will be
-     reported and a mail generated if something goes wrong.
+   * DAR_ genera estadísticas tras cada ejecución. No las queremos
+     en nuestro cron porque generarían emailsl innecesarios. Sólo
+     ``stdout`` (la salida estándar) es redireccionada a
+     ``/dev/null``.  Los errores serán mostrados y un email enviado
+     si algo va mal.
 
-   * The last two ``find`` commands are optional. I use them to
-     change file ownership to a normal user, which will later create
-     the backup.  Again, another security risk. root should backup
-     that from root, and users should backup their stuff. But with
-     a mono user system, I don't care. If some intruder is good
-     enough to go through my firewall and account passwords to take
-     a look at my backups, I'm already screwed.
+   * Los últimos dos comandos ``find`` son opcionales. Los uso para
+     cambiar el propietario a un usuario normal, quien creará
+     posteriormente las copias de seguridad. De nuevo, otro
+     riesgo de seguridad. El usuario root debería hacer copias
+     de seguridad como root, y los usuarios deberían realizar sus
+     propias copias. Pero en un sistema monousuario me da igual.
+     Si algún intruso es lo suficientemente bueno para atravesar el
+     cortafuegos y las palabras claves de mis cuentas de usuarios
+     para poder leer las copias de seguridad, ya la he fastidiado.
 
-   Now place the following nearly identical script for differential
-   backups under ``/root/dar_diff.sh``::
+   Ahora ponga el siguiente script casi idéntico para copias de
+   seguridad diferenciales en ``/root/dar_diff.sh``::
 
       #!/bin/sh
       
