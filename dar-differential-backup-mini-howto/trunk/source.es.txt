@@ -472,13 +472,15 @@ Configurando algunos scripts para automatizar el proceso
       15 0 2-31 * * ./dar_diff.sh
       15 0 1    * * ./dar_backup.sh
 
-   Look up in ``man -S 5 crontab`` the syntax of the command. In
-   short, those two lines tell cron to run the scripts 15 minutes
-   past midnight. ``dar_backup.sh`` will be run only the first day
-   of the month. The other script will be run all the other days.
+   Puede informarse sobre la sintaxis con ``man -S 5 crontab``.
+   En pocas palabras, estas dos líneas le dicen a cron que ejecute
+   los scripts 15 minutos tras medianoche. ``dar_backup.sh``
+   se ejecutará sólo el primer día del mes. El otro script se
+   ejecutará el resto de los días.
 
-   Here are the backup scripts for your users. They are the same,
-   changing only switches to the DAR_ command and paths::
+   Aquí están los scripts de copia de seguridad para sus usuarios.
+   Son iguales, cambiando únicamente los parámetros del comando DAR_
+   y algunas rutas::
 
       #!/bin/sh
       # dar_backup.sh
