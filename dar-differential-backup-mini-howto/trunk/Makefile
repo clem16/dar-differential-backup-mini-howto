@@ -68,7 +68,15 @@ add_words:
 	sort tmp.txt|uniq> source.en.txt.ignored_words
 	rm tmp.txt
 	svn diff source.en.txt.ignored_words
+	cat source.es.txt |aspell list --lang=es |sort|uniq> tmp.txt
+	-cat source.es.txt.ignored_words >> tmp.txt
+	sort tmp.txt|uniq> source.es.txt.ignored_words
+	rm tmp.txt
+	svn diff source.es.txt.ignored_words
 
 spell:
 	aspell --lang=en create master ./.aspell.dic.source.en.txt < ./source.en.txt.ignored_words
 	aspell check source.en.txt --lang=en --add-extra-dicts ./.aspell.dic.source.en.txt
+	aspell --lang=es create master ./.aspell.dic.source.es.txt < ./source.es.txt.ignored_words
+	aspell check source.es.txt --lang=es --add-extra-dicts ./.aspell.dic.source.es.txt
+        
