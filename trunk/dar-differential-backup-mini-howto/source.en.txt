@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 14:37:46 $
-:Version: $Revision: 1.7 $
+:Date: $Date: 2003/10/19 14:40:53 $
+:Version: $Revision: 1.8 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -357,10 +357,10 @@ The end
    is unclear or wrong (which is worse), drop me an email. If you
    find this document useful and want to translate it, send me a
    translation of the file ``source.en.txt`` so I can distribute
-   it along this version and users can find easily their preferred
-   version. Talking about locations, you shold be able to get the
-   source of this document from my personal home page (link `at the
-   beginning of the document`__).
+   it along this version and users can find easily their localized
+   version. Talking about locations, you should be able to get
+   the source of this document from my personal home page (link
+   `at the beginning of the document`__).
 
 __ `DAR differential backup mini-howto`_
 
