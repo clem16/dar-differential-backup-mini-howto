@@ -4,15 +4,19 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2004/01/03 11:46:34 $
-:Version: $Revision: 1.15 $
+:Date: $Date: 2004/01/03 12:07:49 $
+:Version: $Revision: 1.16 $
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
 .. contents::
 .. _Bzip2: http://sources.redhat.com/bzip2/
+.. _cdrecord: http://www.fokus.fhg.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
 .. _DAR: http://dar.linux.free.fr/
 .. _Freshmeat: http://freshmeat.net/
+.. _Knoppix: http://www.knoppix.org/
+.. _rsync: http://rsync.samba.org/
+.. _ssh: http://www.openssh.com/
 .. _tar: http://freshmeat.net/projects/tar/
 .. _Tripwire: http://www.tripwire.org/
 
@@ -44,16 +48,12 @@ Introduction
    specific day with ease, if I ever need to. DAR_ is a commandline
    program, and it can get slightly complex with a few options.
    This little mini-howto will explain my custom solution, which
-   is very crude, but works fine for me (yes, I've actually tested
-   restoring the data from the backup). The document is split in
-   a few chapters:
-
-   - `Simple DAR usage`_.
-   - `The backup strategy`_.
-   - `Making a full backup with DAR`_.
-   - `Making differential backups with DAR`_.
-   - `Setting up some scripts to automate the process`_.
-   - `Recovering your backup to a clean machine`_.
+   is very crude, but works fine for me. Yes, I've actually tested
+   restoring the data from the backup. In fact, during the end of
+   the year 2003 I moved to another country and I took just one
+   CDROM with me plus a bootable Knoppix_, and I recovered the exact
+   state of my Debian installation in a few hours. No customizing,
+   no long installations, no missing files.
 
    This document was written using version 1.3.0 of DAR_. When
    I updated to DAR 2.0.3, everything kept working, I didn't
@@ -515,6 +515,33 @@ Recovering your backup to a clean machine
    files. You can put the result in a temporary directory, so the
    nice thing is you don't have to wipe your hard disk to test it.
 
+
+Future ideas
+============
+
+   I'm not going to implement these soon, because I'm very lazy,
+   but if you are one of those hyperactive hackers, here are some
+   things which would be nice:
+
+   * Update the scripts to generate daily a CDROM image with
+     cdrecord_ and burn it automatically to a rewritable disc
+     placed in your machine. So if your whole hard disk is trashed,
+     you still have the last backup on removable media. Of course,
+     this is limited and cannot be automated if your backup spans
+     more than one CDROM. Do the same for ZIP/JAZZ/whatever you have.
+
+   * Integration of generated backups with a mini Knoppix_ bootable
+     distro. Or any other floppy distro which can be booted from
+     CDROM. So you have a recovery CDROM with tools to format your
+     hard disk, and near it you have a fresh backup to restore a
+     working machine.
+
+   * Syncronization of backup directories through Internet with
+     remote hosts. Even if the whole machine is burnt physically
+     along with your house, you have up to date backups somewhere
+     else. Could be done easily with programs like rsync_ through
+     ssh_ running in a cron job.
+   
 
 The end
 =======
