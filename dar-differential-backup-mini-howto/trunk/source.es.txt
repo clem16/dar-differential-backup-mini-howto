@@ -361,19 +361,21 @@ Haciendo copias de seguridad diferenciales con DAR
    fechas, su tamaño comprimido, etc.  Puede extraer un *catálogo*
    y almacenarlo por separado. ¿Para qué querría hacer esto? Para
    configurar copias de seguridad diferenciales por red.
-   
-   In order to create a differential backup, you need to provide the
-   previous backup so DAR_ can decide which files have changed or
-   not. Doing this can be expensive in bandwidth if you work with a
-   network. Instead, after you create a backup, you can extract the
-   *catalogue* and send it to the machine doing the backups. Next
-   time, you can use this file with the ``-A`` switch, and it will
-   all work as if the complete file was there.
 
-   This can be also useful if you use slices, because the *catalogue*
-   is created from the first and last slice. It's more comfortable
-   to pass a single file to the backup command rather than having
-   to carry the disks of your previous backup with you.
+   Para poder crear una copia de seguridad diferencial, necesita
+   proporcionar a DAR_ la copia de seguridad previa para que pueda
+   decidir qué ficheros han cambiado. Relizar esto puede consumir
+   mucho ancho de banda en una red. En su lugar, tras crear la
+   copia de seguridad, puede extraer el *catálogo* y enviarlo a la
+   máquina que realiza las copias de seguridad.  La siguiente vez,
+   puede usar este fichero con el parámetro ``-A``, y funcionará
+   como si el fichero completo estuviese ahí.
+
+   Esto también puede ser útil si usa trozos, porque el *catálogo*
+   se crea a partir del primer y último trozo. Es mucho más cómodo
+   usar un solo fichero con el comando de copia de seguridad en
+   lugar de tener que llevar consigo los discos de la copia de
+   seguridad anterior.
 
 
 Configurando algunos scripts para automatizar el proceso
