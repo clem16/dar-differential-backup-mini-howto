@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2004/01/03 12:07:49 $
-:Version: $Revision: 1.16 $
+:Date: $Date: 2004/01/03 12:08:38 $
+:Version: $Revision: 1.17 $
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
@@ -516,8 +516,8 @@ Recovering your backup to a clean machine
    nice thing is you don't have to wipe your hard disk to test it.
 
 
-Future ideas
-============
+Ideas for the future
+====================
 
    I'm not going to implement these soon, because I'm very lazy,
    but if you are one of those hyperactive hackers, here are some
