@@ -566,9 +566,9 @@ Adding checks to the backup scripts
    is reached.
 
    Another script in a cron job would move to the final backup
-   directory those files which have a ``*.valid`` tag, and deleting
-   all other files whose last modification timestamp is older than
-   one hour.
+   directory those archives which have a ``*.valid`` tag, and
+   deleting all other whose last modification timestamp is older
+   than one hour.
    
 
 Ideas for the future
