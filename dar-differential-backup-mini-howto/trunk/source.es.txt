@@ -594,11 +594,10 @@ Añadiendo verificaciones a los scripts
       /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
 
-   You can test this version easily running the script and killing
-   the DAR_ process from another terminal or console with ``killall
-   dar``. That will force the termination of the DAR_ process and
-   you will see that one of the failure branches is reached in the
-   backup script.
+   Puede probar esta versión fácilmente ejecutando el script
+   y matando el proceso DAR_ desde otra terminal o consola con
+   ``killall dar``.  Esto forzará la terminación del proceso DAR_
+   y verá que una de las ramas de error es alcanzada en el script.
 
    Another possible use of testing the status code could be to
    remove incomplete archives from the hard disk if something
