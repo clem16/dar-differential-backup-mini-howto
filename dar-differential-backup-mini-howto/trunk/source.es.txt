@@ -288,7 +288,7 @@ Copia de seguridad completa con DAR
          echo "La fecha de hoy es `date -I`"
 
    * ``-Z patrón_fichero``
-      Usando las reglas normales de meta carácteres en ficheros puede
+      Usando las reglas normales de meta caracteres en ficheros puede
       especificar patrones de ficheros que quiere almacenar en la
       copia de seguridad sin compresión. Esto sólo tiene sentido
       si usa el parámetro ``-y``. Comprimir ficheros comprimidos
