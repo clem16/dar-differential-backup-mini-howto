@@ -64,18 +64,19 @@ Introducción
    instalación Debian en cuestión de horas.  Sin personalizaciones,
    sin largas instalaciones, sin ficheros perdidos.
 
-   This document was written using version 1.3.0 of DAR_. When
-   I updated to DAR 2.0.3, everything kept working, I didn't
-   even have to update my backup archives.  So it looks like the
-   interface and backup format are pretty stable, or at least
-   backwards compatible. However, don't take everything said here
-   for granted.  Verify that the version of DAR_ you have installed
-   works as expected and you can restore from the generated backup
-   before you have to rely on it.
+   Este documento fue escrito usando la versión 1.3.0 de DAR_. Cuando
+   me actualicé a DAR 2.0.3, todo seguía funcionando, ni si quiera
+   tuve que actualizar mis archivos de copias de seguridad. Así
+   que parece que la interfaz y el formato de copias de seguridad
+   son bastante estables, o almenos compatibles hacia atrás. No
+   obstante, no confíe a ciegas en este documento. Verifique que la
+   versión de DAR_ que tiene instalada funciona como espera y que
+   puede recuperar una copia de seguridad generada antes de tener
+   que depender de ella.
 
-   This version of the text uses reStructuredText (that's
-   what the weird markup in the text version is for). See
-   http://docutils.sourceforge.net/ for more information.
+   Esta versión del texto usa reStructuredText (para eso son las
+   marcas extrañas en la versión en modo texto). Lea más sobre esto
+   en http://docutils.sourceforge.net/.
 
 
 Simple DAR usage
