@@ -6,8 +6,8 @@
 :Contact: gradha@titanium.sabren.com
 :Translator: David Gervasoni
 :Contact: david0@virgilio.it
-:Date: $Date: 2004-08-01 22:11:38 +0100 (Sun, 01 Aug 2004) $
-:Version: $Rev: 332 $ (under Subversion_ control)
+:Date: $Date$
+:Version: $Rev$ (under Subversion_ control)
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
