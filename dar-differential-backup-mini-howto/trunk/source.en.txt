@@ -5,7 +5,7 @@
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
 :Date: $Date$
-:Version: $Revision: 323 $
+:Version: $Revision: 323 $ (under Subversion_ control)
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
@@ -17,6 +17,7 @@
 .. _Knoppix: http://www.knoppix.org/
 .. _rsync: http://rsync.samba.org/
 .. _ssh: http://www.openssh.com/
+.. _Subversion: http://subversion.tigris.org/
 .. _tar: http://freshmeat.net/projects/tar/
 .. _Tripwire: http://www.tripwire.org/
 
@@ -516,6 +517,59 @@ Recovering your backup to a clean machine
    files. You can put the result in a temporary directory, so the
    nice thing is you don't have to wipe your hard disk to test it.
 
+
+Adding checks to the backup scripts
+===================================
+
+   Denis Corbin suggests that the scripts creating the backups could
+   verify the exit status of the DAR_ command. I think that in most
+   situations this is not needed because DAR_ itself will bail out
+   with an error message, and cron will report any output through
+   mail (something which doesn't happen if everything goes right).
+
+   However, testing the exit status can be useful if you are testing
+   the scripts interactively and want to know which commands are
+   executed::
+
+      #!/bin/sh
+      
+      DIR=/oldg/backup
+      FILE=${DIR}/`/bin/date -I`_data
+      # Commands
+      if /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
+            -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
+            -P mnt -P dev/pts -P proc -P floppy -P burner \
+            -P cdrom > /dev/null ; then
+         if /usr/local/bin/dar -t $FILE > /dev/null ; then
+            echo "Archive created and successfully tested."
+         else
+            echo "Archive created but test FAILED."
+         fi
+      else
+         echo "Archive creating FAILED."
+      fi
+      /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
+      /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
+
+   You can test this version easily running the script and killing
+   the DAR_ process from another terminal or console with ``killall
+   dar``. That will force the termination of the dar process and
+   you will see that one of the failure branches is reached in the
+   backup script.
+
+   Another possible use of testing the status code could be to
+   remove incomplete archives from the hard disk if something went
+   wrong. However, a power failure in the middle of a backup would go
+   unnoticed, so you could instead do a *positive verification*. This
+   means creating the backup in a temporary directory along with
+   a ``*.valid`` file in the successfull branch of the script
+   is reached.
+
+   Another script in a cron job would move to the final backup
+   directory those files which have a ``*.valid`` tag, and deleting
+   all other files whose last modification timestamp is older than
+   one hour.
+   
 
 Ideas for the future
 ====================
