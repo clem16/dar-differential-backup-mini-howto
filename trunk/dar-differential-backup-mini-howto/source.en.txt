@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 13:56:26 $
-:Version: $Revision: 1.5 $
+:Date: $Date: 2003/10/19 14:07:22 $
+:Version: $Revision: 1.6 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -182,7 +182,9 @@ The backup strategy
    scripts called periodically by cron (`Setting up some scripts
    to automate the process`_), so I don't mind having long command
    lines, and this very same document serves for the purpose of
-   documenting the scripts.
+   documenting the scripts. If you prefer configuration files,
+   read DAR's documentation to find out how to use them and the
+   format they use.
 
 
 Making a full backup with DAR
@@ -265,18 +267,29 @@ Making a full backup with DAR
       system directories which aren't really physical files like
       ``proc``, other drives you may have mounted under ``mnt``
       (most notably the drive you are putting the backup file),
-      etc, etc.
+      etc, etc. Note that the paths you specify must be relative
+      to the path specified by the ``-R`` switch.
 
    That wasn't so hard. Check DAR_'s manual page for more useful
-   switches you might want to use.
+   switches you might want to use. And here's the command line I'll
+   be running as a plain user inside my home directory::
 
-                            
+      dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_data \
+         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -P instalacion_manual \
+         -P Mail/mail_pa_leer
+
+   Nothing new under the sun. As you see, most of the command line
+   is identical to the other one, I only change the name of the
+   directories I want to exclude with ``-P`` and the root directory
+   with the ``-R`` switch.
+
+
 Making differential backups with DAR
 ====================================
 
    Todo.
 
-   
+
 Setting up some scripts to automate the process
 ===============================================
 
@@ -288,7 +301,7 @@ Recovering your backup to a clean machine
 
    Yeah.
 
-   
+
 The end
 =======
 
