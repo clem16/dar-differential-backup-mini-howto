@@ -247,16 +247,18 @@ Copia de seguridad completa con DAR
       el 6 me va bien.
 
    * ``-s 600M``
-      Here comes DAR_'s slice feature. The specified size of 600
-      Megabytes is the maximum file size DAR_ will create. If your
-      backup is bigger, you will end up with different backup files
-      each with a slice number before the file extension, so you
-      can save each file to a different unit of your backup media
-      (floppies, zip, CDROM, etc). My backups are much smaller
-      than this size, and I keep this switch just to be safe if I
-      happen to create a big file in my home directory and forget
-      to delete it. If this switch is useful for you, check DAR_'s
-      manual for the ``-S`` switch too.
+      Aquí está la característica de DAR_ de trocear. El tamaño
+      especificado de 600 Megabytes es el tamaño máximo de fichero
+      que DAR_ creará. Si su copia de seguridad es mayor, obtendrá
+      varios ficheros de copia de seguridad, cada uno con su número
+      de trozo antes de la extensión del fichero, para que pueda
+      salvar cada uno en una unidad diferente de almacenamiento
+      (disquetes, zip, CDROM, etc). Mis copias de seguridad son
+      mucho más pequeñas que este tamaño, y mantengo este parámetro
+      sólo por si acaso se me ocurre crear un fichero grande en
+      mi directorio home y olvido borrarlo. Si este parámetro
+      le resulta útil, lea también en el manual de DAR_ sobre el
+      parámetro ``-S``.
 
    * ``-D``
       Stores directories excluded by the ``-P`` option or absent
