@@ -653,11 +653,12 @@ Ideas para el futuro
      seguridad fresca con la cual reestablecer su máquina a un
      estado funcional.
 
-   * Synchronisation of backup directories through Internet with
-     remote hosts. Even if the whole machine is burnt physically
-     along with your house, you have up to date backups somewhere
-     else. Could be done easily with programs like rsync_ through
-     ssh_ running in a cron job.
+   * Sincronización de los directorios con copias de seguridad a
+     través de Internet con máquinas remotas. Así, si su máquina
+     acaba quemándose físicamente junto con su casa, todavía tiene
+     copias de seguridad seguras en alguna otra parte. Podría hacerse
+     de forma sencilla con programas como rsync_ funcionando por ssh_
+     como tarea del cron.
    
 
 The end
