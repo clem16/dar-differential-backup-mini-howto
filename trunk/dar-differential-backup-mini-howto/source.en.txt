@@ -4,7 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 13:30:49 $
+:Date: $Date: 2003/10/19 13:48:18 $
+:Version: $Revision: 1.4 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -281,8 +282,10 @@ The end
    And that's the whole *magic*. If you have problems, something
    is unclear or wrong (which is worse), drop me an email. If you
    find this document useful and want to translate it, send me a
-   translation of the file ``source.txt`` so I can distribute it
-   along this version and users can find easily their preferred
-   version.
+   translation of the file ``source.en.txt`` so I can distribute
+   it along this version and users can find easily their preferred
+   version. Talking about locations, you shold be able to get the
+   source of this document from my personal home page (link at the
+   beginning of the documen).
 
    Enjoy!
