@@ -623,12 +623,12 @@ Añadiendo verificaciones a los scripts
    cuya última fecha de modificación fuese mayor que una hora.
    
 
-Ideas for the future
+Ideas para el futuro
 ====================
 
-   I'm not going to implement these soon, because I'm very lazy,
-   but if you are one of those hyperactive hackers, here are some
-   things which would be nice:
+   No voy a implementar estas pronto, porque soy muy vago, pero si
+   usted es uno de esos hackers hiperactivos, aquí tiene algunas
+   cosas que estaría bien tener:
 
    * Unify both the main and differential scripts into a single one,
      so if the script is run and there is no main backup for the
