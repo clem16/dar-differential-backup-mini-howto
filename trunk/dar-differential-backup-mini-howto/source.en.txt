@@ -4,9 +4,9 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2004/01/03 11:17:30 $
-:Version: $Revision: 1.14 $
-:Web site: http://gradha.sdf-eu.org/
+:Date: $Date: 2004/01/03 11:46:34 $
+:Version: $Revision: 1.15 $
+:Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
 .. contents::
@@ -20,7 +20,7 @@
 Introduction
 ============
 
-   We all should make backup of our important data. This omnipresent
+   We all should make backups of our important data. This omnipresent
    advice is usually ignored by most people. I ignored it too,
    until I lost a good deal of important data. Not happy enough,
    I managed to continue loosing data in a few posterior incidents,
@@ -61,7 +61,8 @@ Introduction
    interface and backup format are pretty stable, or at least
    backwards compatible. However, don't take everything said here
    for granted.  Verify that the version of DAR_ you have installed
-   works as expected and you can restore from the generated backup.
+   works as expected and you can restore from the generated backup
+   before you have to rely on it.
 
    This version of the text uses reStructuredText (that's
    what the weird markup in the text version is for). See
