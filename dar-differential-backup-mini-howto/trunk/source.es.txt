@@ -506,21 +506,23 @@ Configurando algunos scripts para automatizar el proceso
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
 
-   Don't forget to add the required crontab entries for your user
-   pointing to the appropriate path.
+   No olvide añadir las entradas crontab requeridas por su usuario
+   apuntando a la ruta adecuada.
       
 
-Recovering your backup to a clean machine
-=========================================
+Recuperando su copia de seguridad desde cero
+============================================
 
-   When the time comes to restore your backup, depending on what you
-   saved you will have a full backup of one month plus differential
-   backups up to the last time you managed to make. The restoration
-   process is very simple, it's the same as described on the first
-   chapter (`Simple DAR usage`_), only you have to do it first for
-   the full backup, and then for the differential ones.  This can
-   be boring, so here's another shell script you can save with your
-   backup files::
+   Cuando llegue el momento de recuperar su copia de seguridad,
+   dependiendo de lo que haya guardado tendrá una copia de seguridad
+   completa del mes más copias de seguridad diferenciales hasta la
+   última vez que las pudo realizar.  El proceso de recuperación
+   es muy simple, es el mismo descrito en el primer capítulo (`Uso
+   simple de DAR`_), sólo que debe hacerlo primero con la copia
+   de seguridad completa, y entonces con las copias de seguridad
+   diferenciales.  Esto puede ser muy aburrido, así que aquí tiene
+   otro script que puede guardar junto con sus ficheros de copia
+   de seguridad::
 
       #!/bin/sh
 
