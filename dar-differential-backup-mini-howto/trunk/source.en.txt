@@ -573,7 +573,7 @@ Adding checks to the backup scripts
    this version of the script would still leave dangling invalid
    archives. To prevent this you could enhance the script to do
    a *positive verification*. This means creating the backup in
-   a temporary directory along with a ``*.valid`` file in the
+   a temporary directory along with a ``*.valid`` file if the
    successful branch of the script is reached.
 
    With this strategy, another cron script monitoring the directory
