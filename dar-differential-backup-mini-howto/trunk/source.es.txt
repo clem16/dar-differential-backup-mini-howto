@@ -28,17 +28,20 @@
 Introducción
 ============
 
-   We all should make backups of our important data. This omnipresent
-   advice is usually ignored by most people. I ignored it too,
-   until I lost a good deal of important data. Not happy enough,
-   I managed to continue loosing data in a few posterior incidents,
-   until I decided that it was enough. Then I browsed Freshmeat_
-   for backup solutions allowing differential backup and found DAR_.
+   Todos deberíamos hacer copias de seguridad de nuestros datos
+   importantes.  Este consejo omnipresente es habitualmente ignorado
+   por la mayoría de las personas. Yo lo ignoré también, hasta que
+   perdí una buena cantidad de datos importantes. Insatisfecho,
+   continué perdiendo datos en algunos incidentes posteriores,
+   hasta que decidí que era bastante. Entonces busqué programas de
+   copias de seguridad en Freshmeat_ que permitiesen hacer copias
+   de seguridad diferenciales y encontré DAR_.
 
-   A complete backup means that all the files falling under your
-   backup policy will be saved. A differential or incremental backup
-   will contain only the files whose contents have changed since
-   the previous backup, either full or differential.
+   Una copia de seguridad completa significa que todos los ficheros
+   bajo su política de seguridad serán guardados. Una copia de
+   seguridad diferencial o incremental, sólo contendrá aquellos
+   ficheros cuyos contenidos han cambiado desde la copia de seguridad
+   anterior, ya sea esta completa o diferencial.
 
    DAR_ allows you to create easily a set of differential
    backups. The solution I've developed helps me have an automatic
