@@ -148,22 +148,25 @@ Uso simple de DAR
       safecopy.py/  translate_chars.py/
       
 
-The backup strategy
-===================
+La estrategia de copias de seguridad
+====================================
 
-   The first step to create a good backup is to determine what parts
-   of your system need one.  This doesn't necessarily mean that you
-   can't create a full backup, but most likely splitting it in at
-   least two parts is going to help DAR_ (or any backup tool) a lot.
+   El primer paso para crear una buena copia de seguridad es
+   determinar qué partes de su sistema necesitan una. Esto
+   no significa necesariamente que no puede crear una copia de
+   seguridad completa, sólo que repartir la copia en al menos dos
+   partes puede ayudar mucho a DAR_ (y cualquier otra herramienta
+   de copias de seguridad).
 
-   My home system consists of two hard disks. The first hard disk is
-   split into a 3.8 GB partition where my complete system lives, and
-   another partition of 11 GB where all my music and other temporary
-   files are stored, like a local Debian package repository I make
-   for myself. The second hard disk has a 9.4 GB partition and
-   its only purpose is to serve as backup of the primary disk. I
-   have no interest in backing up my music, because I have all the
-   original CDs lying around and have scripts to re-ogg them.
+   Mi sistema en casa se compone de dos discos duros. El primero
+   está partido en una partición de 3.8 GB donde vive mi sistema
+   completo, y otra partición de 11 GB donde almaceno mi música y
+   otros ficheros temporales, como un repositorio local de paquetes
+   Debian que hago para mí mismo.  El segundo disco duro tiene
+   una partición de 9.4 GB cuyo único propósito es servir de copia
+   de seguridad del disco primario. No tengo interés en realizar
+   copias de seguridad de mi música, porque tengo todos los CDs
+   originales y scripts para recomprimirlos en formato ogg.
 
    From the 3.8 GB I want to backup, usually between 1.3 and 1.5 GB
    are always empty.  I will split logically the used 2.3 GB into
