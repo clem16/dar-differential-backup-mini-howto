@@ -1,13 +1,15 @@
 NAME=dar-differential-backup-mini-howto
 CP=cp
 RM=rm
+FORMATTER=rest2html
+FORMATTER_OPTIONS=--embed-stylesheet --stylesheet-path style.css
 
 .PHONY: all dist clean
 
 all: $(NAME).en.html
 
 $(NAME).%.html: source.%.txt
-	rest2html $< > $@
+	$(FORMATTER) $(FORMATTER_OPTIONS) $< > $@
 
 clean:
 	$(RM) -f $(NAME).??.html *.bak *.bz2
