@@ -30,3 +30,14 @@ dist: all
 	$(RM) -fR $(BASENAME)
 	mv $(NAME).*.html $(BASENAME).tar.bz2 ~/web/sdf/textos/
 	@echo Now go update your web page and delete stale links!!!
+
+add_words:
+	cat source.en.txt |aspell list --lang=en |sort|uniq> tmp.txt
+	-cat source.en.txt.ignored_words >> tmp.txt
+	sort tmp.txt|uniq> source.en.txt.ignored_words
+	rm tmp.txt
+	svn diff source.en.txt.ignored_words
+
+spell:
+	aspell --lang=en create master ./.aspell.dic.source.en.txt < ./source.en.txt.ignored_words
+	aspell check source.en.txt --lang=en --add-extra-dicts ./.aspell.dic.source.en.txt
