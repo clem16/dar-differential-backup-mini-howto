@@ -29,3 +29,4 @@ dist: all
 	arcdir -t tar.bz2 $(BASENAME)
 	$(RM) -fR $(BASENAME)
 	mv $(NAME).*.html $(BASENAME).tar.bz2 ~/web/sdf/textos/
+	@echo Now go update your web page and delete stale links!!!
