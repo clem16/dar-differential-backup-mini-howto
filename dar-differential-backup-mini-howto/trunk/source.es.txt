@@ -274,18 +274,18 @@ Copia de seguridad completa con DAR
       así que apuntará al directorio raíz.
 
    * ``-c `date -I`_data``
-      This is the mandatory switch I talked of before, and it means
-      to create a backup archive. For those who don't understand
-      what follows, ```date -I``` is the shell's back tick
-      expansion. In short, ``date -I`` will provide a date as
-      YYYY-MM-DD format. With back ticks and used as a parameter,
-      the output of the command will be used as a string of the
-      parent command. This way you can create backup archives with
-      the creation date embedded in the name. If you still don't
-      understand what I'm talking about, try to run the following
-      from the command line::
+      Este es uno de los parámetros obligatorios de los que hablé
+      antes, y significa crear una copia de seguridad. Para aquellos
+      que no entienden lo que sigue, ```date -I``` es la expansión
+      de comillas de la shell de línea de comando. En pocas plabras,
+      ``date -I`` proporcionará la fecha en formato AAAA-MM-DD. Con
+      comillas y usado como parámetro, la salida del comando será
+      usada como cadena del comando padre. De este modo puede
+      crear copias de seguridad con la fecha de creación empotrada
+      en el nombre.  Si todavía no sabe de lo que hablo, intente
+      ejecutar lo siguiente desde la línea de comando::
 
-         echo "Today's date is `date -I`"
+         echo "La fecha de hoy es `date -I`"
 
    * ``-Z file_pattern``
       Using normal file name globing you can specify patterns
