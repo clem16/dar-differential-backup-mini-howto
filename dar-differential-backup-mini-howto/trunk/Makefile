@@ -23,6 +23,7 @@ dist: all
 	mkdir dist
 	$(CP) source.*.txt dist
 	$(CP) Makefile dist
+	svn update
 	svn log > ChangeLog
 	$(CP) ChangeLog dist
 	$(RM) -fR $(BASENAME) $(BASENAME).tar.bz2
