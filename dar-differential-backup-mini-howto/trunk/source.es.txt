@@ -616,11 +616,11 @@ Añadiendo verificaciones a los scripts
    junto con un fichero ``*.valid`` si se alcanza la rama adecuada
    del script con éxito.
 
-   With this strategy, another cron script monitoring the directory
-   where the temporary backups are placed would move to the final
-   backup directory those archives which have a ``*.valid`` file,
-   deleting all other whose last modification timestamp is older
-   than one hour.
+   Continuando esta estrategia, otro script cron monitorizando el
+   directorio donde se crean los ficheros temporales de copias de
+   seguridad movería al directorio final aquellos archivos con un
+   fichero ``*.valid`` correspondiente, borrando todos los demás
+   cuya última fecha de modificación fuese mayor que una hora.
    
 
 Ideas for the future
