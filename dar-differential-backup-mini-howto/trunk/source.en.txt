@@ -596,7 +596,7 @@ Ideas for the future
      your machine happens to be down during the time the monthly
      backup is done.
 
-   * Update the scripts to generate daily a CDROM image with
+   * Upgrade the scripts to generate daily a CDROM image with
      cdrecord_ and burn it automatically to a rewritable disc
      placed in your machine. So if your whole hard disk is trashed,
      you still have the last backup on removable media. Of course,
