@@ -205,13 +205,13 @@ La estrategia de copias de seguridad
    tal o cual directorio. Esto puede ser útil si vuelve dentro de
    unos meses y se pregunta qué hacen todas estas opciones.
 
-   For my setup, I'll be running the DAR_ commands inside shell
-   scripts called periodically by cron (`Setting up some scripts
-   to automate the process`_), so I don't mind having long command
-   lines, and this very same document serves for the purpose of
-   documenting the scripts. If you prefer configuration files,
-   read DAR_'s documentation to find out how to use them and the
-   format they use.
+   Con mi configuración, ejecutaré comandos DAR_ desde scripts shell
+   llamados periódicamente por cron (`Configurando algunos scripts
+   para automatizar el proceso`_), así que no me importa tener
+   largas líneas de comando, y este mismo documento tiene doble
+   propósito para documentar esos scripts. Si prefiere ficheros
+   de configuración, lea la documentación de DAR para aprender su
+   formato y cómo usarlos.
 
 
 Making a full backup with DAR
@@ -365,8 +365,8 @@ Making differential backups with DAR
    to carry the disks of your previous backup with you.
 
 
-Setting up some scripts to automate the process
-===============================================
+Configurando algunos scripts para automatizar el proceso
+========================================================
 
    As said before, now it's the time to put our backup solution
    under cron.  Place the following executable script for *system*
