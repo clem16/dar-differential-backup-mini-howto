@@ -261,15 +261,17 @@ Copia de seguridad completa con DAR
       parámetro ``-S``.
 
    * ``-D``
-      Stores directories excluded by the ``-P`` option or absent
-      from the command line path list as empty directories. This
-      is helpful when you are recovering a backup from scratch, so
-      you don't have to create manually all the excluded directories.
+      Almacena directorios como directorios vacíos aquellos excluídos
+      por la opción ``-P`` o aquellos ausentes en la línea de
+      comando como parámetros. Esto es útil cuando recupera una
+      copia de seguridad desde cero, para que no tenga que crear
+      manualmente todos los directorios que fueron excluídos.
 
    * ``-R /``
-      Specifies the root directory for saving or restoring files. By
-      default this points to the current working directory. We are
-      doing a *system backup* here, so it will be the root directory.
+      Especifica el directorio raíz para salvar o recuperar ficheros.
+      Por defecto esto apunta al directorio de trabajo actual.
+      Estamos realizando una *copia de seguridad de sistema*,
+      así que apuntará al directorio raíz.
 
    * ``-c `date -I`_data``
       This is the mandatory switch I talked of before, and it means
