@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 14:07:22 $
-:Version: $Revision: 1.6 $
+:Date: $Date: 2003/10/19 14:37:46 $
+:Version: $Revision: 1.7 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -287,7 +287,55 @@ Making a full backup with DAR
 Making differential backups with DAR
 ====================================
 
-   Todo.
+   Once you have a full backup you can create a differential
+   backup. The first differential backup has to be done using the
+   full backup as reference. The following differential backups use
+   the latest differential backup as reference. Here's the command
+   line for a *system* differential backup::
+
+      dar -m 256 -y -s 600M -D -R / -c `date -I`_diff -Z "*.gz" \
+         -Z "*.bz2" -Z "*.zip" -P home/gregorio -P tmp -P mnt \
+         -P dev/pts -P proc -P floppy -P burner -P cdrom \
+         -A previous_backup
+
+   * ``-c `date -I`_diff``
+      I only change the name of the file, cosmetical purpose.
+
+   * ``-A previous_backup``
+      This new switch is used to tell DAR_ where is to be found
+      the previous backup so it can create a differential backup
+      instead of a full backup. The only thing you have to take
+      care of is that you don't specify slice neither extension in
+      the file name, otherwise DAR_ will make you an interactive
+      question at the command line.
+
+   The user command line is exactly the same. Here it is for
+   completeness::
+
+      dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_diff \
+         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -P instalacion_manual \
+         -P Mail/mail_pa_leer -A previous_backup
+
+   DAR_ has another nice feature we don't use here:
+   *catalogues*. When you create a backup archive with DAR_,
+   internally it contains the data plus a *catalogue*. This
+   *catalogue* contains information about what files were saved,
+   their dates, their compressed size, etc. You can extract the
+   *catalogue* and store it separately. Why would you want to do
+   this? To set up networked differential backups.
+
+   In order to create a differential backup, you need to provide the
+   previous backup so DAR_ can decide which files have changed or
+   not. Doing this can be expensive in bandwidth if you work with a
+   network. Instead, after you create a backup, you can extract the
+   *catalogue* and send it to the machine doing the backups. Next
+   time, you can use this file with the ``-A`` switch, and it will
+   all work as if the complete file was there.
+
+   This can be also useful if you use slices, because the *catalogue*
+   is created from the first and last slice. It's more comfortable
+   to pass a single file to the backup command rather than having
+   to carry the disks of your previous backup with you.
 
 
 Setting up some scripts to automate the process
