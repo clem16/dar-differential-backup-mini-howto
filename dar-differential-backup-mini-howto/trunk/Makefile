@@ -1,5 +1,5 @@
 NAME=dar-differential-backup-mini-howto
-CP=cp
+CP=@cp
 RM=rm
 FORMATTER=rest2html
 FORMATTER_OPTIONS=--embed-stylesheet --stylesheet-path style.css
@@ -21,11 +21,14 @@ BASENAME = $(NAME)-$(H_VERSION)-$(SRC_VERSION)
 dist: all
 	$(RM) -fR dist
 	mkdir dist
-	$(CP) source.*.txt dist
+	@# Copy all the interesting files.
+	$(CP) source.*.txt Makefile style.css dist
 	$(CP) Makefile dist
+	@# Now generate a changes log.
 	svn update
 	svn log > ChangeLog
 	$(CP) ChangeLog dist
+	@# Nice. Now package.
 	$(RM) -fR $(BASENAME) $(BASENAME).tar.bz2
 	mv dist $(BASENAME)
 	arcdir -t tar.bz2 $(BASENAME)
