@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2004/01/03 12:20:05 $
-:Version: $Revision: 1.19 $
+:Date: $Date: 2004/02/15 20:49:28 $
+:Version: $Revision: 1.20 $
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
@@ -204,8 +204,8 @@ Making a full backup with DAR
    of switches, I'll go on describing the purpose of each of them::
 
       dar -m 256 -y -s 600M -D -R / -c `date -I`_data -Z "*.gz" \
-         -Z "*.bz2" -Z "*.zip" -P home/gregorio -P tmp -P mnt \
-         -P dev/pts -P proc -P floppy -P burner -P cdrom
+         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
+         -P mnt -P dev/pts -P proc -P floppy -P burner -P cdrom
 
    * ``-m 256``
       DAR_ can compress your backup. The compression is applied
@@ -261,7 +261,7 @@ Making a full backup with DAR
 
          echo "Today's date is `date -I`"
 
-   * ``-Z mask``
+   * ``-Z file_pattern``
       Using normal file name globing you can specify patterns
       of files you want to store in your archive without
       compression. This only has sense if you use the ``-y``
@@ -284,8 +284,8 @@ Making a full backup with DAR
    be running as a plain user inside my home directory::
 
       dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_data \
-         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -P instalacion_manual \
-         -P Mail/mail_pa_leer
+         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
+         -P instalacion_manual -P Mail/mail_pa_leer
 
    Nothing new under the sun. As you see, most of the command line
    is identical to the other one, I only change the name of the
@@ -303,8 +303,8 @@ Making differential backups with DAR
    line for a *system* differential backup::
 
       dar -m 256 -y -s 600M -D -R / -c `date -I`_diff -Z "*.gz" \
-         -Z "*.bz2" -Z "*.zip" -P home/gregorio -P tmp -P mnt \
-         -P dev/pts -P proc -P floppy -P burner -P cdrom \
+         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
+         -P mnt -P dev/pts -P proc -P floppy -P burner -P cdrom \
          -A previous_backup
 
    * ``-c `date -I`_diff``
@@ -322,8 +322,8 @@ Making differential backups with DAR
    completeness::
 
       dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_diff \
-         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -P instalacion_manual \
-         -P Mail/mail_pa_leer -A previous_backup
+         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
+         -P instalacion_manual -P Mail/mail_pa_leer -A previous_backup
 
    DAR_ has another nice feature we don't use here:
    *catalogues*. When you create a backup archive with DAR_,
@@ -360,8 +360,9 @@ Setting up some scripts to automate the process
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
       /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
-         -Z "*.bz2" -Z "*.zip" -P home/gregorio -P tmp -P mnt \
-         -P dev/pts -P proc -P floppy -P burner -P cdrom > /dev/null
+         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
+         -P mnt -P dev/pts -P proc -P floppy -P burner \
+         -P cdrom > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
@@ -401,7 +402,7 @@ Setting up some scripts to automate the process
       FILE=${DIR}/`/bin/date -I`_diff
       PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1|/usr/bin/awk -F '.' '{print $1;}'`
       /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
-         -Z "*.bz2" -Z "*.zip" -P home/gregorio -P tmp -P mnt \
+         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp -P mnt \
          -P dev/pts -P proc -P floppy -P burner -P cdrom -A $PREV > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
@@ -449,8 +450,8 @@ Setting up some scripts to automate the process
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
       /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gregorio -c $FILE \
-         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -P .spec -P instalacion_manual \
-         -P Mail/mail_pa_leer > /dev/null
+         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
+         -P instalacion_manual -P Mail/mail_pa_leer > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
       
@@ -461,8 +462,8 @@ Setting up some scripts to automate the process
       FILE=${DIR}/`/bin/date -I`_diff
       PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1|/usr/bin/awk -F '.' '{print $1;}'`
       /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gregorio -c $FILE \
-         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -P .spec -P instalacion_manual \
-         -P Mail/mail_pa_leer -A $PREV > /dev/null
+         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.zip" \
+         -P instalacion_manual -P Mail/mail_pa_leer -A $PREV > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
 
