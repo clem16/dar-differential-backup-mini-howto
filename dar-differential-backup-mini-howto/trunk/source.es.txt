@@ -320,14 +320,16 @@ Copia de seguridad completa con DAR
    raíz con el parámetro ``-R``.
 
 
-Making differential backups with DAR
-====================================
+Haciendo copias de seguridad diferenciales con DAR
+==================================================
 
-   Once you have a full backup you can create a differential
-   backup. The first differential backup has to be done using the
-   full backup as reference. The following differential backups use
-   the latest differential backup as reference. Here's the command
-   line for a *system* differential backup::
+   Un vez tenga una copia de seguridad completa puede crear una
+   copia de seguridad diferencial. La primera copia de seguridad
+   diferencial debe ser realizada usando la copia de seguridad
+   completa como referencia.  Las siguientes copias de seguridad
+   diferenciales usan la última copia de seguridad diferencial
+   como referencia. Aquí está la línea de comando para una copia
+   de seguridad diferencial de *sistema*::
 
       dar -m 256 -y -s 600M -D -R / -c `date -I`_diff -Z "*.gz" \
          -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
