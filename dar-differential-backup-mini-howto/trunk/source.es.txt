@@ -630,11 +630,12 @@ Ideas para el futuro
    usted es uno de esos hackers hiperactivos, aquí tiene algunas
    cosas que estaría bien tener:
 
-   * Unify both the main and differential scripts into a single one,
-     so if the script is run and there is no main backup for the
-     current month, the main backup will be created. Useful if
-     your machine happens to be down during the time the monthly
-     backup is done.
+   * Unificar tanto el script principal como el diferencial en uno,
+     por lo que si el script se ejecuta y no hay fichero de copia
+     de seguridad principal para el mes actual, será creado, y de
+     lo contrario se creará uno diferencia. Útil si su máquina está
+     apagada por alguna razón durante el día del mes que realiza
+     la copia de seguridad no diferencial.
 
    * Update the scripts to generate daily a CDROM image with
      cdrecord_ and burn it automatically to a rewritable disc
