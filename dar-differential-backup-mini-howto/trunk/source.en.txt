@@ -522,10 +522,11 @@ Adding checks to the backup scripts
 ===================================
 
    Denis Corbin suggests that the scripts creating the backups could
-   verify the exit status of the DAR_ command. I think that in most
-   situations this is not needed because DAR_ itself will bail out
-   with an error message, and cron will report any output through
-   mail (something which doesn't happen if everything goes right).
+   verify the exit status of the DAR_ command. For the purpose of
+   these very simple scripts this is not critical because DAR_
+   itself will bail out with an error message, and cron will
+   report any output through mail (something which doesn't happen
+   if everything goes right).
 
    However, testing the exit status can be useful if you are testing
    the scripts interactively and want to know which commands are
@@ -558,15 +559,24 @@ Adding checks to the backup scripts
    backup script.
 
    Another possible use of testing the status code could be to
-   remove incomplete archives from the hard disk if something went
-   wrong. However, a power failure in the middle of a backup would go
-   unnoticed, so you could instead do a *positive verification*. This
-   means creating the backup in a temporary directory along with
-   a ``*.valid`` file in the successful branch of the script
-   is reached.
+   remove incomplete archives from the hard disk if something
+   went wrong, trigger additional external commands when something
+   fails, or avoid testing the created archive when you know that
+   the first command already failed. The latter can be done easily
+   concatenating both the creation and testing commands with ``&&``
+   in a single line. That will tell the shell to run both commands
+   as a sequence and avoid running the second if the first failed.
 
-   Another script in a cron job would move to the final backup
-   directory those archives which have a ``*.valid`` tag, and
+   However, if a power failure happens in the middle of a backup,
+   this version of the script would still leave dangling invalid
+   archives. To prevent this you could enhance the script to do
+   a *positive verification*. This means creating the backup in
+   a temporary directory along with a ``*.valid`` file in the
+   successful branch of the script is reached.
+
+   With this strategy, another cron script monitoring the directory
+   where the temporary backups are placed would move to the final
+   backup directory those archives which have a ``*.valid`` file,
    deleting all other whose last modification timestamp is older
    than one hour.
    
