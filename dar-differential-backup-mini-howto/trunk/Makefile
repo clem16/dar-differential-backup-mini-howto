@@ -1,24 +1,46 @@
 NAME=dar-differential-backup-mini-howto
 CP=@cp
 RM=rm
-FORMATTER=rest2html
-FORMATTER_OPTIONS=--embed-stylesheet --stylesheet-path style.css
+FORMATTER_HTML=rest2html
+FORMATTER_HTML_OPTIONS=--embed-stylesheet --stylesheet-path style.css
 
 .PHONY: all dist clean
 
 all: $(NAME).en.html $(NAME).it.html
 
+pdf: $(NAME).en.pdf $(NAME).it.pdf
+
+ps: $(NAME).en.ps $(NAME).it.ps
+
 $(NAME).%.html: source.%.txt
-	$(FORMATTER) $(FORMATTER_OPTIONS) $< > $@
+	$(FORMATTER_HTML) $(FORMATTER_HTML_OPTIONS) $< > $@
+
+$(NAME).%.pdf: source.%.tex
+	$(FORMATTER_HTML) $(FORMATTER_HTML_OPTIONS) $< > $@
+
+$(NAME).%.pdf: $(NAME).%.dvi
+	dvipdf $< $@
+
+$(NAME).%.dvi: $(NAME).%.tex
+	latex $<
+
+$(NAME).en.tex: source.en.txt
+	rest2latex --generator --language=en $< > $@
+
+$(NAME).it.tex: source.it.txt
+	rest2latex --generator --language=it $< > $@
 
 clean:
-	$(RM) -f $(NAME).*.html *.bak *.bz2
+	$(RM) -f $(NAME).??.html *.bak *.bz2 $(NAME).??.pdf
+	$(RM) -f $(NAME).??.toc $(NAME).??.dvi $(NAME).??.ps
+	$(RM) -f $(NAME).??.aux $(NAME).??.tex $(NAME).??.out
+	$(RM) -f $(NAME).??.log
 
 H_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$2}')
 SRC_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$4}')
 BASENAME = $(NAME)-$(H_VERSION)-$(SRC_VERSION)
 
-dist: all
+dist: all pdf
 	$(RM) -fR dist
 	mkdir dist
 	@# Copy all the interesting files.
@@ -34,7 +56,7 @@ dist: all
 	arcdir -t tar.bz2 $(BASENAME)
 	$(RM) -fR $(BASENAME)
 	-mkdir ~/release
-	mv $(NAME).*.html $(BASENAME).tar.bz2 ~/release
+	mv $(NAME).??.pdf $(NAME).??.html $(BASENAME).tar.bz2 ~/release
 	@echo Files in ~/release. Now update your web page!
 
 add_words:
