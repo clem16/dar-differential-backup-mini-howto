@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 13:48:18 $
-:Version: $Revision: 1.4 $
+:Date: $Date: 2003/10/19 13:56:26 $
+:Version: $Revision: 1.5 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -49,8 +49,9 @@ Introduction
    - `Simple DAR usage`_.
    - `The backup strategy`_.
    - `Making a full backup with DAR`_.
-   - Making differential backups with DAR_.
+   - `Making differential backups with DAR`_.
    - `Setting up some scripts to automate the process`_.
+   - `Recovering your backup to a clean machine`_.
 
    Note that all this document applies **only** to version 1.3.0
    of DAR_. If it works with other versions, you are lucky.
@@ -200,9 +201,9 @@ Making a full backup with DAR
       to individual files, and it can be bad for small files. By
       default files with 100 bytes or less won't be compressed.
       With the ``-m`` switch I increase this to 256, which seems to
-      work better for all those little configuration files lying in
-      /etc/ and /home. As you see this is a totally optional switch,
-      basically for tuning freaks like me.
+      work better for all those little configuration files lying
+      under ``/etc/`` and ``/home``. As you see this is a totally
+      optional switch, basically for tuning freaks like me.
       
    * ``-y [level]``
       This option activates Bzip2_ archive compression, which
@@ -270,12 +271,24 @@ Making a full backup with DAR
    switches you might want to use.
 
                             
+Making differential backups with DAR
+====================================
+
+   Todo.
+
+   
 Setting up some scripts to automate the process
 ===============================================
 
    Cron will help us...
 
 
+Recovering your backup to a clean machine
+=========================================
+
+   Yeah.
+
+   
 The end
 =======
 
@@ -285,7 +298,9 @@ The end
    translation of the file ``source.en.txt`` so I can distribute
    it along this version and users can find easily their preferred
    version. Talking about locations, you shold be able to get the
-   source of this document from my personal home page (link at the
-   beginning of the documen).
+   source of this document from my personal home page (link `at the
+   beginning of the document`__).
+
+__ `DAR differential backup mini-howto`_
 
    Enjoy!
