@@ -306,18 +306,18 @@ Copia de seguridad completa con DAR
       especifique aquí deben ser relativas a la ruta especificada
       por el parámetro ``-R``.
 
-   That wasn't so hard. Check DAR_'s manual page for more useful
-   switches you might want to use. And here's the command line I'll
-   be running as a plain user inside my home directory::
+   Eso no fue tan difícil. En el manual de DAR_ puede leer sobre
+   más parámetros que pueda querer usar. Y aquí está la linea de
+   comando que ejecutaré como usuario dentro de mi directorio home::
 
       dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_data \
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
          -P instalacion_manual -P Mail/mail_pa_leer
 
-   Nothing new under the sun. As you see, most of the command line
-   is identical to the other one, I only change the name of the
-   directories I want to exclude with ``-P`` and the root directory
-   with the ``-R`` switch.
+   Nada nuevo bajo el sol. Como puede ver, la mayoría de la línea
+   de comando es idéntica a la anterior, únicamente cambio el nombre
+   de los directorios que quiero excluir con ``-P`` y el directorio
+   raíz con el parámetro ``-R``.
 
 
 Making differential backups with DAR
