@@ -637,12 +637,13 @@ Ideas para el futuro
      apagada por alguna razón durante el día del mes que realiza
      la copia de seguridad no diferencial.
 
-   * Update the scripts to generate daily a CDROM image with
-     cdrecord_ and burn it automatically to a rewritable disc
-     placed in your machine. So if your whole hard disk is trashed,
-     you still have the last backup on removable media. Of course,
-     this is limited and cannot be automated if your backup spans
-     more than one CDROM. Do the same for ZIP/JAZZ/whatever you have.
+   * Mejorar los scripts para generar una imagen CDROM diaria con
+     cdrecord_ y grabarla automáticamente en un disco regrabable
+     colocado en su máquina. Por lo que si su disco duro entero
+     resulta dañado, todavía tiene la última copia de seguridad
+     en un otro medio de almacenamiento. Por supuesto, esto es
+     limitado y no puede ser automático si su copia de seguridad
+     necesita más de un CDROM. Haga lo mismo para ZIP/JAZZ/loquesea.
 
    * Integration of generated backups with a mini Knoppix_ bootable
      distribution. Or any other floppy distribution which can be
