@@ -442,13 +442,14 @@ Configurando algunos scripts para automatizar el proceso
       /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
 
-   The only two changes are the addition of the ``-A`` switch and
-   the generation of the PREV variable with a complicated command
-   line. Let's see what this command line does:
+   Los únicos dos cambios son la adición del parámetro ``-A``
+   y la generación de la variable PREV con una complicada línea
+   de comando.  Veamos qué es lo que hace esta línea de comando:
 
-   * First the ``ls`` command creates a list of the files with
-     ``.dar`` extension in the backup directory. This output is
-     piped to the next command.
+   * Primero el comando ``ls`` crea un listado de los ficheros con
+     la extensión ``.dar`` en el directorio de copias de
+     seguridad. La salida se pasa por una tubería al siguiente
+     comando.
 
    * By default ``ls`` displays files alphabetically. ``tail``
      is used to get the last file with the ``-n 1`` switch, which
