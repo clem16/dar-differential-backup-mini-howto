@@ -43,13 +43,14 @@ Introducción
    ficheros cuyos contenidos han cambiado desde la copia de seguridad
    anterior, ya sea esta completa o diferencial.
 
-   DAR_ allows you to create easily a set of differential
-   backups. The solution I've developed helps me have an automatic
-   backup solution which runs every night. The first day of the
-   month, a full backup is made. The rest of the month, only
-   differential backups are made. In my situation, very few files
-   change from day to day, sometimes the source code of the project
-   I'm hacking on, and always my mailboxes.
+   DAR_ le permite crear de forma sencilla un cojunto de copias de
+   seguridad diferenciales. El método que he resarrollado me ayuda
+   a tener copias de seguridad automáticas que se ejecutan cada
+   noche.  El primer día del mes, se realiza una copia de seguridad
+   completa.  El resto del mes, sólo se realizan copias de seguridad
+   diferenciales.  En mi situación, muy pocos ficheros cambian de
+   un día a otro, algunas veces el código fuente del proyecto en
+   el que estoy trabajando, y siempre mis buzones de correo.
 
    The result is that I can restore the contents of my computer to a
    specific day with ease, if I ever need to. DAR_ is a command line
