@@ -6,11 +6,11 @@ FORMATTER_HTML_OPTIONS=--embed-stylesheet --stylesheet-path style.css
 
 .PHONY: all dist clean
 
-all: $(NAME).en.html $(NAME).it.html
+all: $(NAME).en.html $(NAME).it.html $(NAME).es.html
 
-pdf: $(NAME).en.pdf $(NAME).it.pdf
+pdf: $(NAME).en.pdf $(NAME).it.pdf $(NAME).es.pdf
 
-ps: $(NAME).en.ps $(NAME).it.ps
+ps: $(NAME).en.ps $(NAME).it.ps $(NAME).es.ps
 
 $(NAME).%.html: source.%.txt
 	$(FORMATTER_HTML) $(FORMATTER_HTML_OPTIONS) $< > $@
@@ -26,6 +26,9 @@ $(NAME).%.dvi: $(NAME).%.tex
 
 $(NAME).en.tex: source.en.txt
 	rest2latex --generator --language=en $< > $@
+
+$(NAME).es.tex: source.es.txt
+	rest2latex --generator --language=es $< > $@
 
 $(NAME).it.tex: source.it.txt
 	rest2latex --generator --language=it $< > $@
