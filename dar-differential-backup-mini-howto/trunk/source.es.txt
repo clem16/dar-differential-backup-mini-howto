@@ -113,18 +113,19 @@ Uso simple de DAR
       mailbox_date_trimmer/  mi_copia.1.dar        sdb.py/
       mailbox_reader/        safecopy.py/          translate_chars.py/
 
-   As you will notice, DAR_ will add a number and extension to your
-   name. The purpose of the extension is clear, it helps to know
-   visually that the file is a DAR_ backup. The number is called
-   a *slice*, and this is related to DAR_'s built-in feature of
-   splitting a backup over several media. If for example you wanted
-   to make a backup to CD ROM, but your directories are bigger
-   than the capacity of one CD ROM, you can tell DAR_ to split the
-   archive across as many files as needed, which you can later burn
-   to several units.
+   Tal y como se habrá dado cuenta, DAR_ añade un número y extensión
+   a su nombre. El propósito de la extensión es claro, ayuda a saber
+   visualmente que el fichero es una copia de seguridad de DAR_. El
+   número es un *trozo*, y está relacionada con la característica
+   de DAR_ de repartir la copia de seguridad en varios dispositivos
+   de almacenamiento.  Si por ejemplo quisiese hacer una copia de
+   seguridad en CD ROM, pero sus directorios son mayores que la
+   capacidad de uno, puede decirle a DAR_ que reparta el archivo
+   en tantos ficheros como sea necesario, que luego puede grabar
+   en varios CD ROMs.
 
-   Would you like to recover that backup? Pretty easy, type the
-   following::
+   ¿Quiere recuperar su copia de seguridad? Muy sencillo, teclée
+   lo siguiente::
 
       $ mkdir temp
       $ cd temp
