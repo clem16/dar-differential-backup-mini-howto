@@ -181,17 +181,19 @@ La estrategia de copias de seguridad
    son mis directorios ``Mail`` y ``projects``, donde pongo este
    documento y otro software que escribo/hackeo.
 
-   The basic distinction between *home directories* and *system*
-   can be useful in organizations too. If you work for a university,
-   usually all machines will have the same system configuration
-   but depending on the machine their homes will have different
-   data. You can make a *system backup* of a single machine, and
-   *home backups* of each computer. Another common configuration is
-   having a centralized server which exports home directories with
-   NFS. Here you only have to backup the server. If you have users
-   with high privileges, leave them the task of doing the *system
-   backup* of their own machines, the exported home is something
-   they can ignore because it will be done at the server machine.
+   La diferenciación básica entre *directorios home* y *de sistema*
+   también puede ser útil en organizaciones. Si trabaja para una
+   universidad, normalmente todas las máquinas tendrán la misma
+   configuración de sistema, pero dependiendo de la máquina sus
+   directorios home contendrán datos diferentes. Puede hacer un a
+   *copia de seguridad de sistema* de una sola máquina, y *copias
+   de seguridad del home* de cada máquina. Otra configuración común
+   es tener un servidor central que exporta los directorios home por
+   NFS. Aquí sólo tiene que hacer copia de seguridad del servidor. Si
+   tiene usuarios con privilegios altos, déjeles la tarea de hacer
+   una *copia de seguridad de sistema* de sus propias máquinas,
+   el directorio home exportado es algo que pueden ignorar dado
+   que será realizado en el servidor.
 
    Once you've decided what to backup, you want to decide how
    to configure DAR_ for the backups. You can use switches or
