@@ -14,7 +14,7 @@ $(NAME).%.html: source.%.txt
 clean:
 	$(RM) -f $(NAME).*.html *.bak *.bz2
 
-VERSION = $(shell grep Revision source.en.txt | awk '{print $$3}')
+VERSION = $(shell grep Rev: source.en.txt | awk '{print $$3}')
 BASENAME = $(NAME)-$(VERSION)
 
 dist: all
@@ -22,14 +22,15 @@ dist: all
 	mkdir dist
 	$(CP) source.*.txt dist
 	$(CP) Makefile dist
-	cvs2cl.pl -t
+	svn log > ChangeLog
 	$(CP) ChangeLog dist
 	$(RM) -fR $(BASENAME) $(BASENAME).tar.bz2
 	mv dist $(BASENAME)
 	arcdir -t tar.bz2 $(BASENAME)
 	$(RM) -fR $(BASENAME)
-	mv $(NAME).*.html $(BASENAME).tar.bz2 ~/web/sdf/textos/
-	@echo Now go update your web page and delete stale links!!!
+	-mkdir ~/release
+	mv $(NAME).*.html $(BASENAME).tar.bz2 ~/release
+	@echo Files in ~/release. Now update your web page!
 
 add_words:
 	cat source.en.txt |aspell list --lang=en |sort|uniq> tmp.txt
