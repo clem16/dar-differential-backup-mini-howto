@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 17:23:53 $
-:Version: $Revision: 1.9 $
+:Date: $Date: 2003/10/19 17:40:14 $
+:Version: $Revision: 1.10 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -464,7 +464,47 @@ Setting up some scripts to automate the process
 Recovering your backup to a clean machine
 =========================================
 
-   Yeah.
+   When the time comes to restore your backup, depending on what you
+   saved you will have a full backup of one month plus differential
+   backups up to the last time you managed to make. The restoration
+   process is very simple, it's the same as described on the first
+   chapter (`Simple DAR usage`_), only you have to do it first for
+   the full backup, and then for the differential ones.  This can
+   be boring, so here's another shell script you can save with your
+   backup files::
+
+      #!/bin/sh
+
+      if [ -n "$3" ]; then
+         CMD="$1"
+         INPUT="$2_data"
+         FS_ROOT="$3"
+         $CMD -x "$INPUT" -w -R "$FS_ROOT"
+         for file in ${INPUT:0:8}*_diff*; do
+            $CMD -x "${file:0:15}" -w -R "$FS_ROOT"
+         done
+         echo "All done."
+      else
+         echo "Not enough parameters.
+      
+      Usage: script dar_location base_full_backup directory
+      
+      Where dar_location is a path to a working dar binary, base_full_backup
+      is a date in the format 'YYYY-MM-DD', and directory is the place where
+      you want to put the restored data, usually '/' when run as root."
+      fi
+
+   The script is pretty self explicative. The only things you
+   would care is the ``-w`` switch, which tells DAR_ to overwrite
+   found files. This is necessary for differential backups. Oh,
+   and place the script in the same directory where you put your
+   backup files. Here's an usage example::
+
+      ./recover.sh /usr/local/bin/dar 2003-10-01 /tmp/temp_path/
+
+   Try to run that as a normal user with a few of your backup
+   files. You can put the result in a temporary directory, so the
+   nice thing is you don't have to wipe your hard disk to test it.
 
 
 The end
