@@ -599,14 +599,14 @@ Añadiendo verificaciones a los scripts
    ``killall dar``.  Esto forzará la terminación del proceso DAR_
    y verá que una de las ramas de error es alcanzada en el script.
 
-   Another possible use of testing the status code could be to
-   remove incomplete archives from the hard disk if something
-   went wrong, trigger additional external commands when something
-   fails, or avoid testing the created archive when you know that
-   the first command already failed. The latter can be done easily
-   concatenating both the creation and testing commands with ``&&``
-   in a single line. That will tell the shell to run both commands
-   as a sequence and avoid running the second if the first failed.
+   Otro posible uso de la verificación del código de retorno del
+   comando sería borrar archivos incompletos del disco duro si algo
+   falla, ejecutar comandos externos adicionales si algo falla,
+   o evitar verificar el archivo creado cuando sabe que el primer
+   comando falló. Esto último se puede hacer fácilmente concatenando
+   los comandos de creación y verificación con ``&&`` en una sola
+   línea. Esto le dice a la shell que ejecute ambos comandos como
+   una secuencia para evitar ejecutar el segundo si el primero falla.
 
    However, if a power failure happens in the middle of a backup,
    this version of the script would still leave dangling invalid
