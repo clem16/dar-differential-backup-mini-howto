@@ -237,13 +237,14 @@ Copia de seguridad completa con DAR
       completamente opcional, básicamente para fanáticos del ajuste
       como yo.
       
-   * ``-y [level]``
-      This option activates Bzip2_ archive compression, which
-      by default is turned off.  You can even specify a numeric
-      compression level, which goes from 0 (no compression) to 9
-      (best compression, slow processing). Bzip2_ by default uses 6,
-      which is the best speed/compression ratio for most files. I
-      don't specify compression level, 6 is fine for me.
+   * ``-y [nivel]``
+      Esta opción activa la compresión Bzip2_ del archivo, que por
+      defecto está desactivada. Incluso puede especificar un nivel
+      numérico de compresión, que va de 0 (no compresión) hasta
+      9 (mejor compresión, procesado lento). Bzip2_ por defecto
+      usa 6, que es la mejor relación velocidad/compresión para
+      la mayoría de los ficheros. Yo no uso nivel de compresión,
+      el 6 me va bien.
 
    * ``-s 600M``
       Here comes DAR_'s slice feature. The specified size of 600
