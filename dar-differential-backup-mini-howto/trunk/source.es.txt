@@ -545,11 +545,12 @@ Recuperando su copia de seguridad desde cero
       you want to put the restored data, usually '/' when run as root."
       fi
 
-   The script is pretty self explicative. The only things you
-   would care is the ``-w`` switch, which tells DAR_ to overwrite
-   found files. This is necessary for differential backups. Oh,
-   and place the script in the same directory where you put your
-   backup files. Here's an usage example::
+   Este script es autoexplicativo. La única cosa por la que debe
+   preocuparse es el parámetro ``-w``, que le dice a DAR_ que
+   sobreescriba los ficheros que encuentre. Esto es necesario para
+   copias de seguridad diferenciales. Oh, y ponta el script en el
+   mismo directorio que sus ficheros de copia de seguridad. Aquí
+   tiene un ejemplo de uso::
 
       ./recover.sh /usr/local/bin/dar 2003-10-01 /tmp/temp_path/
 
