@@ -251,9 +251,9 @@ Making a full backup with DAR
    * ``-c `date -I`_data``
       This is the mandatory switch I talked of before, and it means
       to create a backup archive. For those who don't understand
-      what follows, ```date -I``` is the shell's backtick
+      what follows, ```date -I``` is the shell's back tick
       expansion. In short, ``date -I`` will provide a date as
-      YYYY-MM-DD format. With backticks and used as a parameter,
+      YYYY-MM-DD format. With back ticks and used as a parameter,
       the output of the command will be used as a string of the
       parent command. This way you can create backup archives with
       the creation date embedded in the name. If you still don't
@@ -553,7 +553,7 @@ Adding checks to the backup scripts
 
    You can test this version easily running the script and killing
    the DAR_ process from another terminal or console with ``killall
-   dar``. That will force the termination of the dar process and
+   dar``. That will force the termination of the DAR_ process and
    you will see that one of the failure branches is reached in the
    backup script.
 
@@ -562,7 +562,7 @@ Adding checks to the backup scripts
    wrong. However, a power failure in the middle of a backup would go
    unnoticed, so you could instead do a *positive verification*. This
    means creating the backup in a temporary directory along with
-   a ``*.valid`` file in the successfull branch of the script
+   a ``*.valid`` file in the successful branch of the script
    is reached.
 
    Another script in a cron job would move to the final backup
@@ -580,7 +580,7 @@ Ideas for the future
 
    * Unify both the main and differential scripts into a single one,
      so if the script is run and there is no main backup for the
-     current month, the main backup will be created. Usefull if
+     current month, the main backup will be created. Useful if
      your machine happens to be down during the time the monthly
      backup is done.
 
@@ -592,10 +592,10 @@ Ideas for the future
      more than one CDROM. Do the same for ZIP/JAZZ/whatever you have.
 
    * Integration of generated backups with a mini Knoppix_ bootable
-     distro. Or any other floppy distro which can be booted from
-     CDROM. So you have a recovery CDROM with tools to format your
-     hard disk, and near it you have a fresh backup to restore a
-     working machine.
+     distribution. Or any other floppy distribution which can be
+     booted from CDROM. So you have a recovery CDROM with tools to
+     format your hard disk, and near it you have a fresh backup to
+     restore a working machine.
 
    * Synchronisation of backup directories through Internet with
      remote hosts. Even if the whole machine is burnt physically
