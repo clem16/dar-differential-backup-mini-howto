@@ -288,11 +288,11 @@ Copia de seguridad completa con DAR
          echo "La fecha de hoy es `date -I`"
 
    * ``-Z file_pattern``
-      Using normal file name globing you can specify patterns
-      of files you want to store in your archive without
-      compression. This only has sense if you use the ``-y``
-      switch. Compressing compressed files only yields bigger files
-      and wasted CPU time.
+      Usando las reglas normales de metacarácteres en ficheros puede
+      especificar patrones de ficheros que quiere almacenar en la
+      copia de seguridad sin compresión. Esto sólo tiene sentido
+      si usa el parámetro ``-y``. Comprimir ficheros comprimidos
+      únicamente crea ficheros mayores y malgasta tiempo de la CPU.
 
    * ``-P relative_path``
       With this switch you tell DAR_ which paths you don't want
