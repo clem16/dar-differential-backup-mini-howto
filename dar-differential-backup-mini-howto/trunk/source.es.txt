@@ -548,15 +548,16 @@ Recuperando su copia de seguridad desde cero
    Este script es autoexplicativo. La única cosa por la que debe
    preocuparse es el parámetro ``-w``, que le dice a DAR_ que
    sobreescriba los ficheros que encuentre. Esto es necesario para
-   copias de seguridad diferenciales. Oh, y ponta el script en el
+   copias de seguridad diferenciales. Oh, y ponga el script en el
    mismo directorio que sus ficheros de copia de seguridad. Aquí
    tiene un ejemplo de uso::
 
       ./recover.sh /usr/local/bin/dar 2003-10-01 /tmp/temp_path/
 
-   Try to run that as a normal user with a few of your backup
-   files. You can put the result in a temporary directory, so the
-   nice thing is you don't have to wipe your hard disk to test it.
+   Pruebe ejecutar eso como un usuario normal con algunos ficheros
+   de copias de seguridad. Puede poner el resultado en un directorio
+   temporal, así que lo bueno es que no necesita borrar su disco
+   duro para probarlo.
 
 
 Adding checks to the backup scripts
