@@ -1,0 +1,57 @@
+====================================
+ DAR differential backup mini-howto
+====================================
+
+:Author: Grzegorz Adam Hankiewicz
+:Contact: gradha@terra.es
+:Date: $Date: 2003/09/19 23:08:15 $
+:Web site: http://gradha.sdf-eu.org/
+:Copyright: This document has been placed in the public domain.
+
+.. contents::
+.. _DAR: http://dar.linux.free.fr/
+.. _Freshmeat: http://freshmeat.net/
+
+
+Introduction
+============
+
+   We all should make backup of our important data. This omnipresent
+   advice is usually ignored by most people. I ignored it too,
+   until I lost a good deal of important data. Not happy enough,
+   I managed to continue loosing data in a few posterior incidents,
+   until I decided that it was enough. Then I browsed Freshmeat
+   for backup solutions allowing differential backup and found DAR_.
+
+   A complete backup means that all the files falling under your
+   backup policy will be saved. A differential or incremental backup
+   will contain only the files whose contents have changed since
+   the previous backup, either full or differential.
+
+   DAR_ allows you to create easily a set of differential
+   backups. The solution I've developed helps me have an automatic
+   backup solution which runs every night. The first day of the
+   month, a full backup is made. The rest of the month, only
+   differential backups are made. In my situation, very few files
+   change from day to day, sometimes the source code of the project
+   I'm hacking on, and always my mailboxes.
+
+   The result is that I can restore the contents of my computer to a
+   specific day with ease, if I ever needed to. DAR_ is a commandline
+   program, and it can get slightly complex with a few options.
+   This little mini-howto will explain my custom solution, which
+   is very crude, but works fine for me (yes, I've actually tested
+   restoring the data from the backup).
+
+   This version of the text uses reStructuredText (that's
+   what the weird markup in the text version is for). See
+   http://docutils.sourceforge.net/ for more information.
+
+
+The end
+=======
+
+   And that's the whole *magic*. If you have problems, something is
+   unclear or wrong (which is worse), drop me an email.
+
+   Enjoy!
