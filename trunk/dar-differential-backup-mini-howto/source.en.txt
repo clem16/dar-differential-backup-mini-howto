@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2004/01/03 12:08:38 $
-:Version: $Revision: 1.17 $
+:Date: $Date: 2004/01/03 12:15:40 $
+:Version: $Revision: 1.18 $
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
@@ -45,13 +45,13 @@ Introduction
    I'm hacking on, and always my mailboxes.
 
    The result is that I can restore the contents of my computer to a
-   specific day with ease, if I ever need to. DAR_ is a commandline
+   specific day with ease, if I ever need to. DAR_ is a command line
    program, and it can get slightly complex with a few options.
    This little mini-howto will explain my custom solution, which
    is very crude, but works fine for me. Yes, I've actually tested
    restoring the data from the backup. In fact, during the end of
    the year 2003 I moved to another country and I took just one
-   CDROM with me plus a bootable Knoppix_, and I recovered the exact
+   CD ROM with me plus a bootable Knoppix_, and I recovered the exact
    state of my Debian installation in a few hours. No customizing,
    no long installations, no missing files.
 
@@ -107,8 +107,8 @@ Simple DAR usage
    visually that the file is a DAR_ backup. The number is called
    a *slice*, and this is related to DAR_'s built-in feature of
    splitting a backup over several media. If for example you wanted
-   to make a backup to CDROM, but your directories are bigger
-   than the capacity of one CDROM, you can tell DAR_ to split the
+   to make a backup to CD ROM, but your directories are bigger
+   than the capacity of one CD ROM, you can tell DAR_ to split the
    archive across as many files as needed, which you can later burn
    to several units.
 
@@ -155,7 +155,7 @@ The backup strategy
 
    From the 3.8 GB I want to backup, usually between 1.3 and 1.5 GB
    are always empty.  I will split logically the used 2.3 GB into
-   *system* and *home directories* (at the moment of writting this
+   *system* and *home directories* (at the moment of writing this
    my home is 588 MB). The reason for this split is that as a normal
    user, I can only change my home directory and other files from
    the partitions I won't be backing up. Meanwhile the *system*
@@ -173,7 +173,7 @@ The backup strategy
    *home backups* of each computer. Another common configuration is
    having a centralized server which exports home directories with
    NFS. Here you only have to backup the server. If you have users
-   with high priviledges, leave them the task of doing the *system
+   with high privileges, leave them the task of doing the *system
    backup* of their own machines, the exported home is something
    they can ignore.
 
@@ -262,7 +262,7 @@ Making a full backup with DAR
          echo "Today's date is `date -I`"
 
    * ``-Z mask``
-      Using normal file name globbing you can specify patterns
+      Using normal file name globing you can specify patterns
       of files you want to store in your archive without
       compression. This only has sense if you use the ``-y``
       switch. Compressing compressed files only yields bigger files
@@ -308,7 +308,7 @@ Making differential backups with DAR
          -A previous_backup
 
    * ``-c `date -I`_diff``
-      I only change the name of the file, cosmetical purpose.
+      I only change the name of the file, cosmetic purpose.
 
    * ``-A previous_backup``
       This new switch is used to tell DAR_ where is to be found
@@ -380,7 +380,7 @@ Setting up some scripts to automate the process
      them too.
 
    * DAR_ generates statistics after each run. We don't want them
-     in our cron because it will generate unnecesary mail. Only
+     in our cron because it will generate unnecessary mail. Only
      ``stdout`` is redirected to ``/dev/null``. Errors will be
      reported and a mail generated if something goes wrong.
 
@@ -426,7 +426,7 @@ Setting up some scripts to automate the process
      the user, defeating the purpose of automation. We separate the
      complete filename with ``awk``. The ``awk`` command separates
      the string at the dots, and prints the first column. The result
-     is the basename we want to pass DAR_.
+     is the base name we want to pass DAR_.
 
    We only have to put these two scripts under cron control. This
    is what we have to type after ``crontab -e``::
@@ -536,7 +536,7 @@ Ideas for the future
      hard disk, and near it you have a fresh backup to restore a
      working machine.
 
-   * Syncronization of backup directories through Internet with
+   * Synchronisation of backup directories through Internet with
      remote hosts. Even if the whole machine is burnt physically
      along with your house, you have up to date backups somewhere
      else. Could be done easily with programs like rsync_ through
