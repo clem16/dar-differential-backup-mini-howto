@@ -608,12 +608,13 @@ Añadiendo verificaciones a los scripts
    línea. Esto le dice a la shell que ejecute ambos comandos como
    una secuencia para evitar ejecutar el segundo si el primero falla.
 
-   However, if a power failure happens in the middle of a backup,
-   this version of the script would still leave dangling invalid
-   archives. To prevent this you could enhance the script to do
-   a *positive verification*. This means creating the backup in
-   a temporary directory along with a ``*.valid`` file in the
-   successful branch of the script is reached.
+   No obstante, si falla la corriente eléctrica durante una copia
+   deseguridad, esta versión del script todavía dejaría a medio
+   escribir archivos inválidos. Para prevenir esto podría mejorar el
+   script para realizar una *verificación positiva*. Esto significa
+   crear el fichero de copia de seguridad en un directorio temporal
+   junto con un fichero ``*.valid`` si se alcanza la rama adecuada
+   del script con éxito.
 
    With this strategy, another cron script monitoring the directory
    where the temporary backups are placed would move to the final
