@@ -43,8 +43,8 @@ Introducción
    ficheros cuyos contenidos han cambiado desde la copia de seguridad
    anterior, ya sea esta completa o diferencial.
 
-   DAR_ le permite crear de forma sencilla un cojunto de copias de
-   seguridad diferenciales. El método que he resarrollado me ayuda
+   DAR_ le permite crear de forma sencilla un conjunto de copias de
+   seguridad diferenciales. El método que he desarrollado me ayuda
    a tener copias de seguridad automáticas que se ejecutan cada
    noche.  El primer día del mes, se realiza una copia de seguridad
    completa.  El resto del mes, sólo se realizan copias de seguridad
@@ -59,7 +59,7 @@ Introducción
    explicará mi solución personal, que es muy cruda, pero me da
    buenos resultados.  Si, he verificado que puedo recuperar datos
    de las copias de seguridad.  De hecho, a finales del año 2003 me
-   transladé a otro país y sólamente llevé conmigo un CD ROM con
+   trasladé a otro país y solamente llevé conmigo un CD ROM con
    una Knoppix_ autoarrancable, y recuperé el estado exacto de mi
    instalación Debian en cuestión de horas.  Sin personalizaciones,
    sin largas instalaciones, sin ficheros perdidos.
@@ -68,7 +68,7 @@ Introducción
    me actualicé a DAR 2.0.3, todo seguía funcionando, ni si quiera
    tuve que actualizar mis archivos de copias de seguridad. Así
    que parece que la interfaz y el formato de copias de seguridad
-   son bastante estables, o almenos compatibles hacia atrás. No
+   son bastante estables, o al menos compatibles hacia atrás. No
    obstante, no confíe a ciegas en este documento. Verifique que la
    versión de DAR_ que tiene instalada funciona como espera y que
    puede recuperar una copia de seguridad generada antes de tener
@@ -124,7 +124,7 @@ Uso simple de DAR
    en tantos ficheros como sea necesario, que luego puede grabar
    en varios CD ROMs.
 
-   ¿Quiere recuperar su copia de seguridad? Muy sencillo, teclée
+   ¿Quiere recuperar su copia de seguridad? Muy sencillo, teclee
    lo siguiente::
 
       $ mkdir temp
@@ -172,7 +172,7 @@ La estrategia de copias de seguridad
    entre 1.3 y 1.5 GB están vacías. Repartiré las 2.3 GB usadas
    a nivel lógico entre directorios de *sistema* y *home* (en el
    momento de escribir esto, mi home ocupa 588 MB). La razón de
-   esta separacio es que como usuario normal sólo puedo cambiar
+   esta separación es que como usuario normal sólo puedo cambiar
    cosas en mi directorio home y otros ficheros de las particiones
    que no hago copias de seguridad.  Mientras, la parte *sistema*
    de la partición es bastante estable y no se modifica porque
@@ -219,7 +219,7 @@ Copia de seguridad completa con DAR
 
    Aquí está la línea de comando completa que usaré para mi copia de
    seguridad de *sistema*, ejecutada como **root**. No se preocupe
-   por el gran número de parámetros, iré describiéndo su propósito
+   por el gran número de parámetros, iré describiendo su propósito
    uno a uno::
 
       dar -m 256 -y -s 600M -D -R / -c `date -I`_data -Z "*.gz" \
@@ -261,11 +261,11 @@ Copia de seguridad completa con DAR
       parámetro ``-S``.
 
    * ``-D``
-      Almacena directorios como directorios vacíos aquellos excluídos
+      Almacena directorios como directorios vacíos aquellos excluidos
       por la opción ``-P`` o aquellos ausentes en la línea de
       comando como parámetros. Esto es útil cuando recupera una
       copia de seguridad desde cero, para que no tenga que crear
-      manualmente todos los directorios que fueron excluídos.
+      manualmente todos los directorios que fueron excluidos.
 
    * ``-R /``
       Especifica el directorio raíz para salvar o recuperar ficheros.
@@ -277,7 +277,7 @@ Copia de seguridad completa con DAR
       Este es uno de los parámetros obligatorios de los que hablé
       antes, y significa crear una copia de seguridad. Para aquellos
       que no entienden lo que sigue, ```date -I``` es la expansión
-      de comillas de la shell de línea de comando. En pocas plabras,
+      de comillas de la shell de línea de comando. En pocas palabras,
       ``date -I`` proporcionará la fecha en formato AAAA-MM-DD. Con
       comillas y usado como parámetro, la salida del comando será
       usada como cadena del comando padre. De este modo puede
@@ -288,7 +288,7 @@ Copia de seguridad completa con DAR
          echo "La fecha de hoy es `date -I`"
 
    * ``-Z patrón_fichero``
-      Usando las reglas normales de metacarácteres en ficheros puede
+      Usando las reglas normales de meta carácteres en ficheros puede
       especificar patrones de ficheros que quiere almacenar en la
       copia de seguridad sin compresión. Esto sólo tiene sentido
       si usa el parámetro ``-y``. Comprimir ficheros comprimidos
@@ -348,14 +348,14 @@ Haciendo copias de seguridad diferenciales con DAR
       de lo contrario DAR_ le realizará una pregunta interactiva
       en la línea de comando.
 
-   La línea de comando de usuario es exáctamente igual. Aquí está::
+   La línea de comando de usuario es exactamente igual. Aquí está::
 
       dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_diff \
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
          -P instalacion_manual -P Mail/mail_pa_leer -A copia_previa
 
    DAR_ tiene otra buena característica que no usamos: *catálogos*.
-   Cuando crea una copia de segurida dcon DAR_, internamente
+   Cuando crea una copia de seguridad con DAR_, internamente
    contiene todos los datos más un *catálogo*. Este *catálogo*
    contiene información sobre qué ficheros fueron guardados, sus
    fechas, su tamaño comprimido, etc.  Puede extraer un *catálogo*
@@ -364,7 +364,7 @@ Haciendo copias de seguridad diferenciales con DAR
 
    Para poder crear una copia de seguridad diferencial, necesita
    proporcionar a DAR_ la copia de seguridad previa para que pueda
-   decidir qué ficheros han cambiado. Relizar esto puede consumir
+   decidir qué ficheros han cambiado. Realizar esto puede consumir
    mucho ancho de banda en una red. En su lugar, tras crear la
    copia de seguridad, puede extraer el *catálogo* y enviarlo a la
    máquina que realiza las copias de seguridad.  La siguiente vez,
@@ -406,13 +406,13 @@ Configurando algunos scripts para automatizar el proceso
    * FILE contendrá la ruta a la copia de seguridad del día.
 
    * Uso rutas completas para los comandos porque mi cuenta root no
-     las tiene incluídas en el entorno por defecto. Esto es un
+     las tiene incluidas en el entorno por defecto. Esto es un
      riesgo de seguridad potencial. Idealmente querría compilar DAR_
-     como root y guardar los binarios donde los crée para que nadie
+     como root y guardar los binarios donde los cree para que nadie
      pueda tocarlos.  Y también ejecutar Tripwire_ sobre ellos.
 
    * DAR_ genera estadísticas tras cada ejecución. No las queremos
-     en nuestro cron porque generarían emailsl innecesarios. Sólo
+     en nuestro cron porque generarían emails innecesarios. Sólo
      ``stdout`` (la salida estándar) es redireccionada a
      ``/dev/null``.  Los errores serán mostrados y un email enviado
      si algo va mal.
@@ -545,7 +545,7 @@ Recuperando su copia de seguridad desde cero
       you want to put the restored data, usually '/' when run as root."
       fi
 
-   Este script es autoexplicativo. La única cosa por la que debe
+   Este script es auto explicativo. La única cosa por la que debe
    preocuparse es el parámetro ``-w``, que le dice a DAR_ que
    sobreescriba los ficheros que encuentre. Esto es necesario para
    copias de seguridad diferenciales. Oh, y ponga el script en el
@@ -609,7 +609,7 @@ Añadiendo verificaciones a los scripts
    una secuencia para evitar ejecutar el segundo si el primero falla.
 
    No obstante, si falla la corriente eléctrica durante una copia
-   deseguridad, esta versión del script todavía dejaría a medio
+   de seguridad, esta versión del script todavía dejaría a medio
    escribir archivos inválidos. Para prevenir esto podría mejorar el
    script para realizar una *verificación positiva*. Esto significa
    crear el fichero de copia de seguridad en un directorio temporal
@@ -627,7 +627,7 @@ Ideas para el futuro
 ====================
 
    No voy a implementar estas pronto, porque soy muy vago, pero si
-   usted es uno de esos hackers hiperactivos, aquí tiene algunas
+   usted es uno de esos hackers hiper activos, aquí tiene algunas
    cosas que estaría bien tener:
 
    * Unificar tanto el script principal como el diferencial en uno,
@@ -650,7 +650,7 @@ Ideas para el futuro
      distribución basada en disquetes que puede arrancar desde
      CDROM. Así tendría un CDROM de rescate con las herramientas
      para formatear su disco duro, y justo al lado una copia de
-     seguridad fresca con la cual reestablecer su máquina a un
+     seguridad fresca con la cual restablecer su máquina a un
      estado funcional.
 
    * Sincronización de los directorios con copias de seguridad a
@@ -675,4 +675,4 @@ El fin
 
 __ `DAR differential backup mini-howto -ES-`_
 
-   Enjoy!
+   ¡Disfrute!
