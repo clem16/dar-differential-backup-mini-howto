@@ -7,7 +7,7 @@ RM=rm
 all: $(NAME).en.html
 
 $(NAME).%.html: source.%.txt
-	html.py $< > $@
+	rest2html $< > $@
 
 clean:
 	$(RM) -f $(NAME).??.html *.bak *.bz2
