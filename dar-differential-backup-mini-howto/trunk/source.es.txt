@@ -295,15 +295,16 @@ Copia de seguridad completa con DAR
       únicamente crea ficheros mayores y malgasta tiempo de la CPU.
 
    * ``-P relative_path``
-      With this switch you tell DAR_ which paths you don't want
-      to store in your backup archive. Here you want to put the
-      home directory (I'm the only user on this machine, there
-      are a few more, but they are for testing/system purpose),
-      system directories which aren't really physical files like
-      ``proc``, other drives you may have mounted under ``mnt``
-      (most notably the drive you are putting the backup file),
-      etc, etc. Note that the paths you specify must be relative
-      to the path specified by the ``-R`` switch.
+      Con este parámetro le dice a DAR_ qué rutas no quiere
+      almacenar en su copia de seguridad. Aquí posiblemente quiere
+      poner el directorio home (soy el único usuario de la máquina,
+      hay algunos más, pero con el propósito de pruebas/sistema),
+      directorios de sistema que no son realmente ficheros físicos
+      como ``proc``, otras unidades que pueda tener montadas bajo
+      ``mnt`` (destacando la unidad donde va a poner la copia de
+      seguridad), etc, etc.  Tenga en cuenta que las rutas que
+      especifique aquí deben ser relativas a la ruta especificada
+      por el parámetro ``-R``.
 
    That wasn't so hard. Check DAR_'s manual page for more useful
    switches you might want to use. And here's the command line I'll
