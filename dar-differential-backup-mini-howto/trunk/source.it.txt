@@ -655,6 +655,8 @@ The end
    di questo dodumento alla mia home page (link `at the beginning of
    the document`__).
    
+__ `DAR differential backup mini-howto -IT-`_
+
    Enjoy!
 
 
@@ -675,5 +677,4 @@ Per finire
    comunicarmi, i miei dati sono quì -> (link `at the beginning of
    the document`__).
 
-         
 __ `DAR differential backup mini-howto -IT-`_
