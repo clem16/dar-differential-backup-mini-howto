@@ -354,14 +354,14 @@ Haciendo copias de seguridad diferenciales con DAR
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
          -P instalacion_manual -P Mail/mail_pa_leer -A copia_previa
 
-   DAR_ has another nice feature we don't use here:
-   *catalogues*. When you create a backup archive with DAR_,
-   internally it contains the data plus a *catalogue*. This
-   *catalogue* contains information about what files were saved,
-   their dates, their compressed size, etc. You can extract the
-   *catalogue* and store it separately. Why would you want to do
-   this? To set up networked differential backups.
-
+   DAR_ tiene otra buena característica que no usamos: *catálogos*.
+   Cuando crea una copia de segurida dcon DAR_, internamente
+   contiene todos los datos más un *catálogo*. Este *catálogo*
+   contiene información sobre qué ficheros fueron guardados, sus
+   fechas, su tamaño comprimido, etc.  Puede extraer un *catálogo*
+   y almacenarlo por separado. ¿Para qué querría hacer esto? Para
+   configurar copias de seguridad diferenciales por red.
+   
    In order to create a differential backup, you need to provide the
    previous backup so DAR_ can decide which files have changed or
    not. Doing this can be expensive in bandwidth if you work with a
