@@ -14,8 +14,9 @@ $(NAME).%.html: source.%.txt
 clean:
 	$(RM) -f $(NAME).*.html *.bak *.bz2
 
-VERSION = $(shell grep Rev: source.en.txt | awk '{print $$3}')
-BASENAME = $(NAME)-$(VERSION)
+H_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$2}')
+SRC_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$4}')
+BASENAME = $(NAME)-$(H_VERSION)-$(SRC_VERSION)
 
 dist: all
 	$(RM) -fR dist
