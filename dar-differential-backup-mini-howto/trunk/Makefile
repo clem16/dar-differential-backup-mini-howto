@@ -28,7 +28,7 @@ $(NAME).en.tex: source.en.txt
 	rest2latex --generator --language=en $< > $@
 
 $(NAME).es.tex: source.es.txt
-	rest2latex --generator --language=es $< > $@
+	rest2latex --generator --language=it $< > $@
 
 $(NAME).it.tex: source.it.txt
 	rest2latex --generator --language=it $< > $@
