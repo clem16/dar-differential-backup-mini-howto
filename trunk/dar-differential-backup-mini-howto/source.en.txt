@@ -4,13 +4,14 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/18 20:28:56 $
+:Date: $Date: 2003/10/19 13:30:49 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
 .. contents::
 .. _DAR: http://dar.linux.free.fr/
 .. _Freshmeat: http://freshmeat.net/
+.. _Bzip2: http://sources.redhat.com/bzip2/
 
 
 Introduction
@@ -44,9 +45,11 @@ Introduction
    restoring the data from the backup). The document is split in
    a few chapters:
 
-   - Making a full backup with DAR_.
+   - `Simple DAR usage`_.
+   - `The backup strategy`_.
+   - `Making a full backup with DAR`_.
    - Making differential backups with DAR_.
-   - Setting up some scripts to automate the process.
+   - `Setting up some scripts to automate the process`_.
 
    Note that all this document applies **only** to version 1.3.0
    of DAR_. If it works with other versions, you are lucky.
@@ -56,8 +59,8 @@ Introduction
    http://docutils.sourceforge.net/ for more information.
 
 
-Making a full backup with DAR
-=============================
+Simple DAR usage
+================
 
    DAR is very similar to tar in the number of options it has:
    there's plenty for every need, but way too much for beginners to
@@ -104,8 +107,8 @@ Making a full backup with DAR
       $ mkdir temp
       $ cd temp
       $ dar -x ../my_backup_file
-      file ownership will not be restored as dar is not run as root. to avoid this
-      message use -O option [return = OK | esc = cancel]
+      file ownership will not be restored as dar is not run as root.
+      to avoid this message use -O option [return = OK | esc = cancel]
       Continuing...
       
       
@@ -120,13 +123,166 @@ Making a full backup with DAR
        Total number of file considered: 15
       $ ls
       safecopy.py  translate_chars.py
-
       
+
+The backup strategy
+===================
+
+   The first step to create a good backup is to determine what parts
+   of your system need one.  This doesn't necessarily mean that you
+   can't create a full backup, but most likely splitting it in at
+   least two parts is going to help DAR_ (or any backup tool) a lot.
+
+   My home system consists of two hard disks. The first hard disk is
+   split into a 3.8 GB partition where my complete system lives, and
+   another partition of 11 GB where all my music and other temporary
+   files are stored, like a local Debian package repository I make
+   for myself. The second hard disk has a 9.4 GB partition and its
+   only purpose is to serve as backup of the first partition. I
+   have no interest in backing up my music, because I have all the
+   original CDs lying around.
+
+   From the 3.8 GB I want to backup, usually between 1.3 and 1.5 GB
+   are always empty.  I will split logically the used 2.3 GB into
+   *system* and *home directories* (at the moment of writting this
+   my home is 588 MB). The reason for this split is that as a normal
+   user, I can only change my home directory and other files from
+   the partitions I won't be backing up. Meanwhile the *system*
+   part of the partition remains pretty stable and unmodified
+   because I rarely (un)install software. In fact, from my *home*
+   directory the only things changing usually will be my ``Mail``
+   folder and ``projects``, where I put documents like this one
+   and other software I write/hack.
+
+   The basic distinction between *home directories* and *system*
+   can be useful in organizations too. If you work for a university,
+   usually all machines will have the same system configuration
+   but depending on the machine their homes will have different
+   data. You can make a *system backup* of a single machine, and
+   *home backups* of each computer. Another common configuration is
+   having a centralized server which exports home directories with
+   NFS. Here you only have to backup the server. If you have users
+   with high priviledges, leave them the task of doing the *system
+   backup* of their own machines, the exported home is something
+   they can ignore.
+
+   Once you've decided what to backup, you want to decide how
+   to configure DAR_ for the backups. You can use switches or
+   configuration files. Switches are OK when you don't have many
+   options. Configuration files are better when you want to make
+   different complex inclusion/exclusion rules of what files you want
+   to backup, and more importantly, you can use comments to document
+   the switch, stating for example the reason why you included this
+   or that directory. This can be useful if you come back several
+   months later and you wonder why all those options are there.
+
+   For my setup, I'll be running the DAR_ commands inside shell
+   scripts called periodically by cron (`Setting up some scripts
+   to automate the process`_), so I don't mind having long command
+   lines, and this very same document serves for the purpose of
+   documenting the scripts.
+
+
+Making a full backup with DAR
+=============================
+
+   Here is the full command line I'll be using for my *system*
+   backup, running as **root**.  Don't worry about the high number
+   of switches, I'll go on describing the purpose of each of them::
+
+      dar -m 256 -y -s 600M -D -R / -c `date -I`_data -Z "*.gz" \
+         -Z "*.bz2" -Z "*.zip" -P home/gregorio -P tmp -P mnt \
+         -P dev/pts -P proc -P floppy -P burner -P cdrom
+
+   * ``-m 256``
+      DAR_ can compress your backup. The compression is applied
+      to individual files, and it can be bad for small files. By
+      default files with 100 bytes or less won't be compressed.
+      With the ``-m`` switch I increase this to 256, which seems to
+      work better for all those little configuration files lying in
+      /etc/ and /home. As you see this is a totally optional switch,
+      basically for tuning freaks like me.
+      
+   * ``-y [level]``
+      This option activates Bzip2_ archive compression, which
+      by default is turned off.  You can even specify a numeric
+      compression level, which goes from 0 (no compression) to 9
+      (best compression, slow processing). Bzip2_ by default uses 6,
+      which is the best speed/compression ratio for most files. I
+      don't specify compression level, 6 is fine for me.
+
+   * ``-s 600M``
+      Here comes DAR_'s slice feature. The specified size of 600
+      Megabytes is the maximum file size DAR_ will create. If your
+      backup is bigger, you will end up with different backup files
+      each with a slice number before the file extension, so you
+      can save each file to a different unit of your backup media
+      (floppies, zip, CDROM, etc). My backups are much smaller
+      than this size, and I keep this switch just to be safe if I
+      happen to create a big file in my home directory and forget
+      to delete it. If this switch is useful for you, check DAR_'s
+      manual for the ``-S`` switch too.
+
+   * ``-D``
+      Stores directories excluded by the ``-P`` option or absent
+      from the command line path list as empty directories. This
+      is helpful when you are recovering a backup from scratch, so
+      you don't have to create manually all the excluded directories.
+
+   * ``-R /``
+      Specifies the root directory for saving or restoring files. By
+      default this points to the current working directory. We are
+      doing a *system backup* here, so it will be the root directory.
+
+   * ``-c `date -I`_data``
+      This is the mandatory switch I talked of before, and it means
+      to create a backup archive. For those who don't understand
+      what follows, ```date -I``` is the shell's backtick
+      expansion. In short, ``date -I`` will provide a date as
+      YYYY-MM-DD format. With backticks and used as a parameter,
+      the output of the command will be used as a string of the
+      parent command. This way you can create backup archives with
+      the creation date embedded in the name. If you still don't
+      understand what I'm talking about, try to run the following
+      from the command line::
+
+         echo "Today's date is `date -I`"
+
+   * ``-Z mask``
+      Using normal file name globbing you can specify patterns
+      of files you want to store in your archive without
+      compression. This only has sense if you use the ``-y``
+      switch. Compressing compressed files only yields bigger files
+      and wasted CPU time.
+
+   * ``-P relative_path``
+      With this switch you tell DAR_ which paths you don't want
+      to store in your backup archive. Here you want to put the
+      home directory (I'm the only user on this machine, there
+      are a few more, but they are for testing/system purpose),
+      system directories which aren't really physical files like
+      ``proc``, other drives you may have mounted under ``mnt``
+      (most notably the drive you are putting the backup file),
+      etc, etc.
+
+   That wasn't so hard. Check DAR_'s manual page for more useful
+   switches you might want to use.
+
+                            
+Setting up some scripts to automate the process
+===============================================
+
+   Cron will help us...
+
 
 The end
 =======
 
-   And that's the whole *magic*. If you have problems, something is
-   unclear or wrong (which is worse), drop me an email.
+   And that's the whole *magic*. If you have problems, something
+   is unclear or wrong (which is worse), drop me an email. If you
+   find this document useful and want to translate it, send me a
+   translation of the file ``source.txt`` so I can distribute it
+   along this version and users can find easily their preferred
+   version.
 
    Enjoy!
