@@ -1,5 +1,5 @@
 =========================================
- DAR differential backup mini-howto -EN-
+ DAR differential backup mini-howto -ES-
 =========================================
 
 :Author: Grzegorz Adam Hankiewicz
@@ -661,18 +661,18 @@ Ideas para el futuro
      como tarea del cron.
    
 
-The end
-=======
+El fin
+======
 
-   And that's the whole *magic*. If you have problems, something
-   is unclear or wrong (which is worse), drop me an email. If you
-   find this document useful and want to translate it, send me a
-   translation of the file ``source.en.txt`` so I can distribute
-   it along this version and users can find easily their localized
-   version. Talking about locations, you should be able to get
-   the source of this document from my personal home page (link
-   `at the beginning of the document`__).
+   Y esa es toda la *magia*. Si tiene problemas, algo no está claro
+   o es incorrecto (lo cual es peor), mándeme un email. Si encuentra
+   este documento útil y quiere traducirlo, mándeme una traducción
+   del fichero ``source.en.txt`` para que pueda distribuirla junto
+   con esta versión y otros usuarios puedan encontrar fácilmente su
+   versión traducida. Hablando de localizar, debería ser capaz de
+   obtener el código fuente de este documento de mi página personal
+   (enlace `al comienzo del documento`__).
 
-__ `DAR differential backup mini-howto -EN-`_
+__ `DAR differential backup mini-howto -ES-`_
 
    Enjoy!
