@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 20:30:15 $
-:Version: $Revision: 1.11 $
+:Date: $Date: 2003/12/06 14:55:42 $
+:Version: $Revision: 1.12 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -65,7 +65,7 @@ Introduction
 Simple DAR usage
 ================
 
-   DAR is very similar to tar in the number of options it has:
+   DAR_ is very similar to tar in the number of options it has:
    there's plenty for every need, but way too much for beginners to
    handle. As usual, you can always get help from the program typing
    ``dar -h`` or ``man dar`` after you have installed it. Like tar,
@@ -91,8 +91,9 @@ Simple DAR usage
        0 files(s) recorded as deleted from reference backup
        --------------------------------------------
        Total number of file considered: 19
-      $ ls (mejorar esto, en anchura y con -F)
-      mailbox_date_trimmer  mailbox_reader  my_backup_file.1.dar  safecopy.py  sdb.py  translate_chars.py
+      $ ls
+      mailbox_date_trimmer/  my_backup_file.1.dar  sdb.py/
+      mailbox_reader/        safecopy.py/          translate_chars.py/
 
    As you will notice, DAR_ will add a number and extension to your
    name. The purpose of the extension is clear, it helps to know
@@ -184,7 +185,7 @@ The backup strategy
    to automate the process`_), so I don't mind having long command
    lines, and this very same document serves for the purpose of
    documenting the scripts. If you prefer configuration files,
-   read DAR's documentation to find out how to use them and the
+   read DAR_'s documentation to find out how to use them and the
    format they use.
 
 
