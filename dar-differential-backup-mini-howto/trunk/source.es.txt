@@ -381,9 +381,10 @@ Haciendo copias de seguridad diferenciales con DAR
 Configurando algunos scripts para automatizar el proceso
 ========================================================
 
-   As said before, now it's the time to put our backup solution
-   under cron.  Place the following executable script for *system*
-   backup under ``/root/dar_backup.sh``::
+   Tal y como se mencionó anteriormente, es hora de configurar
+   las copias de seguridad bajo cron. Ponga el siguiente
+   script ejecutable para copias de seguridad de *sistema* bajo
+   ``/root/dar_backup.sh``::
 
       #!/bin/sh
       
@@ -398,18 +399,17 @@ Configurando algunos scripts para automatizar el proceso
       /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
 
-   Some things to notice:
+   Algunas cosas a destacar:
 
-   * DIR is the variable which holds the destination directory.
+   * DIR es la variable que contiene el directorio destino.
 
-   * FILE will hold the path to today's backup file.
+   * FILE contendrá la ruta a la copia de seguridad del día.
 
-   * I use full paths for the commands because my root account
-     doesn't have all of them included in the default
-     environment. This is potentially a security risk. Ideally you
-     would like to compile DAR_ as root and keep your binaries where
-     you make them so nobody can touch them. And run Tripwire_ over
-     them too.
+   * Uso rutas completas para los comandos porque mi cuenta root no
+     las tiene incluídas en el entorno por defecto. Esto es un
+     riesgo de seguridad potencial. Idealmente querría compilar DAR_
+     como root y guardar los binarios donde los crée para que nadie
+     pueda tocarlos.  Y también ejecutar Tripwire_ sobre ellos.
 
    * DAR_ generates statistics after each run. We don't want them
      in our cron because it will generate unnecessary mail. Only
