@@ -645,11 +645,13 @@ Ideas para el futuro
      limitado y no puede ser automático si su copia de seguridad
      necesita más de un CDROM. Haga lo mismo para ZIP/JAZZ/loquesea.
 
-   * Integration of generated backups with a mini Knoppix_ bootable
-     distribution. Or any other floppy distribution which can be
-     booted from CDROM. So you have a recovery CDROM with tools to
-     format your hard disk, and near it you have a fresh backup to
-     restore a working machine.
+   * Integrar las copias de seguridad generadas con una mini
+     distribución Knoppix_ autoarrancable. O cualquier otra
+     distribución basada en disquetes que puede arrancar desde
+     CDROM. Así tendría un CDROM de rescate con las herramientas
+     para formatear su disco duro, y justo al lado una copia de
+     seguridad fresca con la cual reestablecer su máquina a un
+     estado funcional.
 
    * Synchronisation of backup directories through Internet with
      remote hosts. Even if the whole machine is burnt physically
