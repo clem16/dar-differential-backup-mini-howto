@@ -5,9 +5,11 @@
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
 :Date: $Date$
-:Version: $Rev$ (under Subversion_ control)
+:Version: H1 ($Rev$ under Subversion_ control)
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
+:Translations: From the web site you can get this document in
+               English and Italian.
 
 .. contents::
 .. _Bzip2: http://sources.redhat.com/bzip2/
