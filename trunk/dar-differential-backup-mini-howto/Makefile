@@ -26,3 +26,4 @@ dist: all
 	mv dist $(BASENAME)
 	arcdir -t tar.bz2 $(BASENAME)
 	$(RM) -fR $(BASENAME)
+	mv $(NAME).??.html $(BASENAME).tar.bz2 ~/web/sdf/textos/
