@@ -1,6 +1,6 @@
-====================================
- DAR differential backup mini-howto
-====================================
+=========================================
+ DAR differential backup mini-howto -EN-
+=========================================
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
@@ -628,6 +628,6 @@ The end
    the source of this document from my personal home page (link
    `at the beginning of the document`__).
 
-__ `DAR differential backup mini-howto`_
+__ `DAR differential backup mini-howto -EN-`_
 
    Enjoy!
