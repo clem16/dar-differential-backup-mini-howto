@@ -9,9 +9,9 @@
 :Date: $Date$
 :Version: H1 ($Rev$ under Subversion_ control)
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
-:Copyright: This document has been placed in the public domain.
-:Translations: From the web site you can get this document in
-               English and Italian.
+:Copyright: Questo documento è posto sotto licenza pubblica generica.
+:Translations: Dal sito web potete raggiungere questo documento in
+               inglese e italiano.
 
 .. contents::
 .. _Bzip2: http://sources.redhat.com/bzip2/
