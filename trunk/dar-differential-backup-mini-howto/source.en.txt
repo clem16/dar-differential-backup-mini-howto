@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2004/02/15 20:49:28 $
-:Version: $Revision: 1.20 $
+:Date: $Date: 2004/04/12 19:42:12 $
+:Version: $Revision: 1.21 $
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
@@ -523,6 +523,12 @@ Ideas for the future
    I'm not going to implement these soon, because I'm very lazy,
    but if you are one of those hyperactive hackers, here are some
    things which would be nice:
+
+   * Unify both the main and differential scripts into a single one,
+     so if the script is run and there is no main backup for the
+     current month, the main backup will be created. Usefull if
+     your machine happens to be down during the time the monthly
+     backup is done.
 
    * Update the scripts to generate daily a CDROM image with
      cdrecord_ and burn it automatically to a rewritable disc
