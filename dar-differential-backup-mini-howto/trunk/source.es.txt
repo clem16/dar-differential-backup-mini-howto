@@ -214,25 +214,28 @@ La estrategia de copias de seguridad
    formato y cómo usarlos.
 
 
-Making a full backup with DAR
-=============================
+Copia de seguridad completa con DAR
+===================================
 
-   Here is the full command line I'll be using for my *system*
-   backup, running as **root**.  Don't worry about the high number
-   of switches, I'll go on describing the purpose of each of them::
+   Aquí está la línea de comando completa que usaré para mi copia de
+   seguridad de *sistema*, ejecutada como **root**. No se preocupe
+   por el gran número de parámetros, iré describiéndo su propósito
+   uno a uno::
 
       dar -m 256 -y -s 600M -D -R / -c `date -I`_data -Z "*.gz" \
          -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
          -P mnt -P dev/pts -P proc -P floppy -P burner -P cdrom
 
    * ``-m 256``
-      DAR_ can compress your backup. The compression is applied
-      to individual files, and it can be bad for small files. By
-      default files with 100 bytes or less won't be compressed.
-      With the ``-m`` switch I increase this to 256, which seems to
-      work better for all those little configuration files lying
-      under ``/etc/`` and ``/home``. As you see this is a totally
-      optional switch, basically for tuning freaks like me.
+      DAR_ puede comprimir su copia de seguridad. La compresión
+      se aplica a ficheros individuales, y puede ser perjudicial
+      para pequeños ficheros. Por defecto los ficheros con 100
+      bytes o menos no serán comprimidos. Con el parámetro ``-m``
+      incremento este valor a 256, el cual parece funcionar mejor
+      para esos pequeños ficheros de configuración que se almacenan
+      en ``/etc/`` y ``/home``. Como puede ver, esta opción es
+      completamente opcional, básicamente para fanáticos del ajuste
+      como yo.
       
    * ``-y [level]``
       This option activates Bzip2_ archive compression, which
