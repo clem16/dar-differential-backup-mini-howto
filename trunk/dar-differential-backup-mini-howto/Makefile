@@ -10,7 +10,7 @@ $(NAME).%.html: source.%.txt
 	html.py $< > $@
 
 clean:
-	$(RM) -f $(NAME).??.html *.bak
+	$(RM) -f $(NAME).??.html *.bak *.bz2
 
 VERSION = $(shell grep Revision source.en.txt | awk '{print $$3}')
 BASENAME = $(NAME)-$(VERSION)
