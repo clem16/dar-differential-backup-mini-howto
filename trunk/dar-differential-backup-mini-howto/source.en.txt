@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 17:40:14 $
-:Version: $Revision: 1.10 $
+:Date: $Date: 2003/10/19 20:30:15 $
+:Version: $Revision: 1.11 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -13,6 +13,7 @@
 .. _DAR: http://dar.linux.free.fr/
 .. _Freshmeat: http://freshmeat.net/
 .. _Bzip2: http://sources.redhat.com/bzip2/
+.. _Tripwire: http://www.tripwire.org/
 
 
 Introduction
@@ -367,7 +368,7 @@ Setting up some scripts to automate the process
      doesn't have all of them included in the default
      environment. This is potentially a security risk. Ideally you
      would like to compile DAR_ as root and keep your binaries where
-     you make them so nobody can touch them. And run tripwire over
+     you make them so nobody can touch them. And run Tripwire_ over
      them too.
 
    * DAR_ generates statistics after each run. We don't want them
