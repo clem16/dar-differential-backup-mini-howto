@@ -6,7 +6,7 @@ FORMATTER_OPTIONS=--embed-stylesheet --stylesheet-path style.css
 
 .PHONY: all dist clean
 
-all: $(NAME).en.html
+all: $(NAME).en.html $(NAME).it.html
 
 $(NAME).%.html: source.%.txt
 	$(FORMATTER) $(FORMATTER_OPTIONS) $< > $@
