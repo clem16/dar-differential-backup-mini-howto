@@ -79,24 +79,25 @@ Introducción
    en http://docutils.sourceforge.net/.
 
 
-Simple DAR usage
-================
+Uso simple de DAR
+=================
 
-   DAR_ is very similar to tar_ in the number of options it has:
-   there's plenty for every need, but way too much for beginners to
-   handle. As usual, you can always get help from the program typing
-   ``dar -h`` or ``man dar`` after you have installed it. Like tar_,
-   there's a set of mandatory switches which define the type of
-   operation you are doing (create, extract, list, etc), and a set
-   of switches which affect the selected option. Just for the sake
-   of it, imagine that you want to backup one folder of your home
-   directory. You would write something like this::
+   DAR_ es muy similar a tar_ en el número de opciones que tiene: hay
+   suficiente para cada necesidad, pero demasiadas para un novato.
+   Como es habitual, siempre puede obtener ayuda del programa
+   tecleando ``dar -h`` o ``man dar`` tras su instalación. Al
+   igual que tar_, hay un conjunto de parámetros obligatorios que
+   definen el tipo de operación que va a realizar (crear, extraer,
+   listar, etc), y un conjunto de parámetros que afectan la opción
+   seleccionada. Simplemente por probar, imagínese que quiere
+   realizar una copia de seguridad de su directorio home. Escribiría
+   algo así::
 
-      dar -c backup_file_without_extension file1 file2 ... fileN
+      dar -c fichero_sin_extension file1 file2 ... fileN
 
-   The output should be similar to the following::
+   La salida debería ser similar a esto::
 
-      $ dar -c my_backup_file safecopy.py/ translate_chars.py/
+      $ dar -c mi_copia safecopy.py/ translate_chars.py/
       
       
        --------------------------------------------
@@ -109,7 +110,7 @@ Simple DAR usage
        --------------------------------------------
        Total number of file considered: 19
       $ ls
-      mailbox_date_trimmer/  my_backup_file.1.dar  sdb.py/
+      mailbox_date_trimmer/  mi_copia.1.dar        sdb.py/
       mailbox_reader/        safecopy.py/          translate_chars.py/
 
    As you will notice, DAR_ will add a number and extension to your
