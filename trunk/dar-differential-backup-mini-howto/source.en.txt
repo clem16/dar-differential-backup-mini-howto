@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/12/06 14:55:42 $
-:Version: $Revision: 1.12 $
+:Date: $Date: 2003/12/06 15:00:14 $
+:Version: $Revision: 1.13 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -126,7 +126,7 @@ Simple DAR usage
        --------------------------------------------
        Total number of file considered: 15
       $ ls
-      safecopy.py  translate_chars.py
+      safecopy.py/  translate_chars.py/
       
 
 The backup strategy
