@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/10/19 14:40:53 $
-:Version: $Revision: 1.8 $
+:Date: $Date: 2003/10/19 17:23:53 $
+:Version: $Revision: 1.9 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -341,8 +341,125 @@ Making differential backups with DAR
 Setting up some scripts to automate the process
 ===============================================
 
-   Cron will help us...
+   As said before, now it's the time to put our backup solution
+   under cron.  Place the following executable script for *system*
+   backup under ``/root/dar_backup.sh``::
 
+      #!/bin/sh
+      
+      DIR=/oldg/backup
+      FILE=${DIR}/`/bin/date -I`_data
+      # Commands
+      /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
+         -Z "*.bz2" -Z "*.zip" -P home/gregorio -P tmp -P mnt \
+         -P dev/pts -P proc -P floppy -P burner -P cdrom > /dev/null
+      /usr/local/bin/dar -t $FILE > /dev/null
+      /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
+      /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
+
+   Some things to notice:
+
+   * DIR is the variable which holds the destination directory.
+
+   * FILE will hold the path to today's backup file.
+
+   * I use full paths for the commands because my root account
+     doesn't have all of them included in the default
+     environment. This is potentially a security risk. Ideally you
+     would like to compile DAR_ as root and keep your binaries where
+     you make them so nobody can touch them. And run tripwire over
+     them too.
+
+   * DAR_ generates statistics after each run. We don't want them
+     in our cron because it will generate unnecesary mail. Only
+     ``stdout`` is redirected to ``/dev/null``. Errors will be
+     reported and a mail generated if something goes wrong.
+
+   * The last two ``find`` commands are optional. I use them to
+     change file ownership to a normal user, which will later create
+     the backup.  Again, another security risk. root should backup
+     that from root, and users should backup their stuff. But with
+     a mono user system, I don't care. If some intruder is good
+     enough to go through my firewall and account passwords to take
+     a look at my backups, I'm already screwed.
+
+   Now place the following nearly identical script for differential
+   backups under ``/root/dar_diff.sh``::
+
+      #!/bin/sh
+      
+      DIR=/oldg/backup
+      FILE=${DIR}/`/bin/date -I`_diff
+      PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1|/usr/bin/awk -F '.' '{print $1;}'`
+      /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
+         -Z "*.bz2" -Z "*.zip" -P home/gregorio -P tmp -P mnt \
+         -P dev/pts -P proc -P floppy -P burner -P cdrom -A $PREV > /dev/null
+      /usr/local/bin/dar -t $FILE > /dev/null
+      /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
+      /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
+
+   The only two changes are the addition of the ``-A`` switch and
+   the generation of the PREV variable with a complicated command
+   line. Let's see what this command line does:
+
+   * First the ``ls`` command creates a list of the files with
+     ``.dar`` extension in the backup directory. This output is
+     piped to the next command.
+
+   * By default ``ls`` displays files alphabetically. ``tail``
+     is used to get the last file with the ``-n 1`` switch, which
+     says to display only the last line. Again, the last filename
+     is piped to the next command.
+
+   * DAR_ wants to operate on filenames without slice number and
+     extension. This means that if we don't get rid of the tail,
+     DAR_ will stop the operation and ask an interactive question to
+     the user, defeating the purpose of automation. We separate the
+     complete filename with ``awk``. The ``awk`` command separates
+     the string at the dots, and prints the first column. The result
+     is the basename we want to pass DAR_.
+
+   We only have to put these two scripts under cron control. This
+   is what we have to type after ``crontab -e``::
+
+      15 0 2-31 * * ./dar_diff.sh
+      15 0 1    * * ./dar_backup.sh
+
+   Look up in ``man -S 5 crontab`` the syntax of the command. In
+   short, those two lines tell cron to run the scripts 15 minutes
+   past midnight. ``dar_backup.sh`` will be run only the first day
+   of the month. The other script will be run all the other days.
+
+   Here are the backup scripts for your users. They are the same,
+   changing only switches to the DAR_ command and paths::
+
+      #!/bin/sh
+      # dar_backup.sh
+      
+      DIR=/oldg/backup_gregorio
+      FILE=${DIR}/`/bin/date -I`_data
+      # Commands
+      /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gregorio -c $FILE \
+         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -P .spec -P instalacion_manual \
+         -P Mail/mail_pa_leer > /dev/null
+      /usr/local/bin/dar -t $FILE > /dev/null
+      /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
+      
+      #!/bin/sh
+      # dar_diff.sh
+      
+      DIR=/oldg/backup_gregorio
+      FILE=${DIR}/`/bin/date -I`_diff
+      PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1|/usr/bin/awk -F '.' '{print $1;}'`
+      /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gregorio -c $FILE \
+         -Z "*.gz" -Z "*.bz2" -Z "*.zip" -P .spec -P instalacion_manual \
+         -P Mail/mail_pa_leer -A $PREV > /dev/null
+      /usr/local/bin/dar -t $FILE > /dev/null
+      /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
+
+   Don't forget to add the required crontab entries for your user
+   pointing to the appropriate path.
+      
 
 Recovering your backup to a clean machine
 =========================================
