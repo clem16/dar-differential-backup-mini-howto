@@ -560,19 +560,19 @@ Recuperando su copia de seguridad desde cero
    duro para probarlo.
 
 
-Adding checks to the backup scripts
-===================================
+Añadiendo verificaciones a los scripts
+======================================
 
-   Denis Corbin suggests that the scripts creating the backups could
-   verify the exit status of the DAR_ command. For the purpose of
-   these very simple scripts this is not critical because DAR_
-   itself will bail out with an error message, and cron will
-   report any output through mail (something which doesn't happen
-   if everything goes right).
+   Denis Corbin sugiere que los scripts que crean las copias de
+   seguridad podrían verificar el código de salida del comando
+   DAR_. Para el propósito de estos scripts tan simples esto no
+   es crítico porque el propio DAR_ abortará la operación con un
+   mensaje de error, y cron informará de cualquier salida de error
+   por email (algo que no ocurre si todo va bien).
 
-   However, testing the exit status can be useful if you are testing
-   the scripts interactively and want to know which commands are
-   executed::
+   No obstante, verificar el código de salida puede ser útil si
+   está probando los scripts de forma interactiva y quiere saber
+   qué comandos están siendo ejecutados::
 
       #!/bin/sh
       
