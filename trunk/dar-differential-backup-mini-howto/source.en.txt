@@ -3,8 +3,8 @@
 ====================================
 
 :Author: Grzegorz Adam Hankiewicz
-:Contact: gradha@terra.es
-:Date: $Date: 2003/09/19 23:08:15 $
+:Contact: gradha@titanium.sabren.com
+:Date: $Date: 2003/10/18 20:28:56 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
@@ -20,7 +20,7 @@ Introduction
    advice is usually ignored by most people. I ignored it too,
    until I lost a good deal of important data. Not happy enough,
    I managed to continue loosing data in a few posterior incidents,
-   until I decided that it was enough. Then I browsed Freshmeat
+   until I decided that it was enough. Then I browsed Freshmeat_
    for backup solutions allowing differential backup and found DAR_.
 
    A complete backup means that all the files falling under your
@@ -37,16 +37,91 @@ Introduction
    I'm hacking on, and always my mailboxes.
 
    The result is that I can restore the contents of my computer to a
-   specific day with ease, if I ever needed to. DAR_ is a commandline
+   specific day with ease, if I ever need to. DAR_ is a commandline
    program, and it can get slightly complex with a few options.
    This little mini-howto will explain my custom solution, which
    is very crude, but works fine for me (yes, I've actually tested
-   restoring the data from the backup).
+   restoring the data from the backup). The document is split in
+   a few chapters:
+
+   - Making a full backup with DAR_.
+   - Making differential backups with DAR_.
+   - Setting up some scripts to automate the process.
+
+   Note that all this document applies **only** to version 1.3.0
+   of DAR_. If it works with other versions, you are lucky.
 
    This version of the text uses reStructuredText (that's
    what the weird markup in the text version is for). See
    http://docutils.sourceforge.net/ for more information.
 
+
+Making a full backup with DAR
+=============================
+
+   DAR is very similar to tar in the number of options it has:
+   there's plenty for every need, but way too much for beginners to
+   handle. As usual, you can always get help from the program typing
+   ``dar -h`` or ``man dar`` after you have installed it. Like tar,
+   there's a set of mandatory switches which define the type of
+   operation you are doing (create, extract, list, etc), and a set
+   of switches which affect the selected option. Just for the sake
+   of it, imagine that you want to backup one folder of your home
+   directory. You would write something like this::
+
+      dar -c backup_file_without_extension file1 file2 ... fileN
+
+   The output should be similar to the following::
+
+      $ dar -c my_backup_file safecopy.py/ translate_chars.py/
+      
+      
+       --------------------------------------------
+       15 inode(s) saved
+       with 0 hard link(s) recorded
+       0 inode(s) not saved (no file change)
+       0 inode(s) failed to save (filesystem error)
+       4 files(s) ignored (excluded by filters)
+       0 files(s) recorded as deleted from reference backup
+       --------------------------------------------
+       Total number of file considered: 19
+      $ ls (mejorar esto, en anchura y con -F)
+      mailbox_date_trimmer  mailbox_reader  my_backup_file.1.dar  safecopy.py  sdb.py  translate_chars.py
+
+   As you will notice, DAR_ will add a number and extension to your
+   name. The purpose of the extension is clear, it helps to know
+   visually that the file is a DAR_ backup. The number is called
+   a *slice*, and this is related to DAR_'s built-in feature of
+   splitting a backup over several media. If for example you wanted
+   to make a backup to CDROM, but your directories are bigger
+   than the capacity of one CDROM, you can tell DAR_ to split the
+   archive across as many files as needed, which you can later burn
+   to several units.
+
+   Would you like to recover that backup? Pretty easy, type the
+   following::
+
+      $ mkdir temp
+      $ cd temp
+      $ dar -x ../my_backup_file
+      file ownership will not be restored as dar is not run as root. to avoid this
+      message use -O option [return = OK | esc = cancel]
+      Continuing...
+      
+      
+       --------------------------------------------
+       15 file(s) restored
+       0 file(s) not restored (not saved in archive)
+       0 file(s) ignored (excluded by filters)
+       0 file(s) less recent than the one on filesystem
+       0 file(s) failed to restore (filesystem error)
+       0 file(s) deleted
+       --------------------------------------------
+       Total number of file considered: 15
+      $ ls
+      safecopy.py  translate_chars.py
+
+      
 
 The end
 =======
