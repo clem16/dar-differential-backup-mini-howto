@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2004/01/03 12:15:40 $
-:Version: $Revision: 1.18 $
+:Date: $Date: 2004/01/03 12:20:05 $
+:Version: $Revision: 1.19 $
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 
@@ -148,10 +148,10 @@ The backup strategy
    split into a 3.8 GB partition where my complete system lives, and
    another partition of 11 GB where all my music and other temporary
    files are stored, like a local Debian package repository I make
-   for myself. The second hard disk has a 9.4 GB partition and its
-   only purpose is to serve as backup of the first partition. I
+   for myself. The second hard disk has a 9.4 GB partition and
+   its only purpose is to serve as backup of the primary disk. I
    have no interest in backing up my music, because I have all the
-   original CDs lying around.
+   original CDs lying around and have scripts to re-ogg them.
 
    From the 3.8 GB I want to backup, usually between 1.3 and 1.5 GB
    are always empty.  I will split logically the used 2.3 GB into
@@ -175,7 +175,7 @@ The backup strategy
    NFS. Here you only have to backup the server. If you have users
    with high privileges, leave them the task of doing the *system
    backup* of their own machines, the exported home is something
-   they can ignore.
+   they can ignore because it will be done at the server machine.
 
    Once you've decided what to backup, you want to decide how
    to configure DAR_ for the backups. You can use switches or
