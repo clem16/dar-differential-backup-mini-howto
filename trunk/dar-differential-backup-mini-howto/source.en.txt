@@ -4,15 +4,16 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date: 2003/12/06 15:00:14 $
-:Version: $Revision: 1.13 $
+:Date: $Date: 2004/01/03 11:17:30 $
+:Version: $Revision: 1.14 $
 :Web site: http://gradha.sdf-eu.org/
 :Copyright: This document has been placed in the public domain.
 
 .. contents::
+.. _Bzip2: http://sources.redhat.com/bzip2/
 .. _DAR: http://dar.linux.free.fr/
 .. _Freshmeat: http://freshmeat.net/
-.. _Bzip2: http://sources.redhat.com/bzip2/
+.. _tar: http://freshmeat.net/projects/tar/
 .. _Tripwire: http://www.tripwire.org/
 
 
@@ -54,8 +55,13 @@ Introduction
    - `Setting up some scripts to automate the process`_.
    - `Recovering your backup to a clean machine`_.
 
-   Note that all this document applies **only** to version 1.3.0
-   of DAR_. If it works with other versions, you are lucky.
+   This document was written using version 1.3.0 of DAR_. When
+   I updated to DAR 2.0.3, everything kept working, I didn't
+   even have to update my backup archives.  So it looks like the
+   interface and backup format are pretty stable, or at least
+   backwards compatible. However, don't take everything said here
+   for granted.  Verify that the version of DAR_ you have installed
+   works as expected and you can restore from the generated backup.
 
    This version of the text uses reStructuredText (that's
    what the weird markup in the text version is for). See
@@ -65,10 +71,10 @@ Introduction
 Simple DAR usage
 ================
 
-   DAR_ is very similar to tar in the number of options it has:
+   DAR_ is very similar to tar_ in the number of options it has:
    there's plenty for every need, but way too much for beginners to
    handle. As usual, you can always get help from the program typing
-   ``dar -h`` or ``man dar`` after you have installed it. Like tar,
+   ``dar -h`` or ``man dar`` after you have installed it. Like tar_,
    there's a set of mandatory switches which define the type of
    operation you are doing (create, extract, list, etc), and a set
    of switches which affect the selected option. Just for the sake
