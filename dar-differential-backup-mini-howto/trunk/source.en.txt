@@ -614,7 +614,22 @@ Ideas for the future
      along with your house, you have up to date backups somewhere
      else. Could be done easily with programs like rsync_ through
      ssh_ running in a cron job.
-   
+
+   In fact, clever people out there have already started making
+   such scripts for themselves and are not afraid to share them. To
+   avoid cluttering this mini-howto I'm going to store them *as-is*
+   at my web page::
+
+      http://gradha.sdf-eu.org/dar_scripts/
+
+   Feel free to send me your own improvement and I'll add it to
+   the directory. Whether you are sending a single script file
+   or ``.tar.gz`` with a whole backup suite, please add a simple
+   ``.txt`` file which I'll put near the file, so people can read
+   what the file does before downloading. Please use English in
+   your description, and don't forget to put your name and email
+   so people can send you bugfixes or improvements!
+
 
 The end
 =======

@@ -644,6 +644,22 @@ Idee per il futuro
      backup in qualche altro posto. Potrebbe essere fatto facilmente
      con programmi come rsync_ attraverso ssh_ eseguiti tramite cron.
    
+In effetti persone accorte hanno già iniziato a creare qualche script
+per sestessi e non hanno problemi a condividerli. Per evitare di
+"disordinare" questo mini-howto ho intenzione di archiviarli *come
+sono* nel mio spazio web::
+
+    http://gradha.sdf-eu.org/dar_scripts/
+
+Sentitevi liberi di inviare i vostri lavori e i vostri aggiornamenti
+e li aggiungerò alla directory. Se avete intenzione di inviare un
+singolo file di script o un ``.tar.gz`` con una intera suite di
+backup, per favore inserite un semplice file ``.txt`` che metterò
+assieme agli altri files, così la gente potrà leggere cosa sono
+e cosa fanno i files, prima di scaricarli. Usate l'inglese nella
+vostra descrizione e non dimenticate di mettere nome e e-mail così
+la gente potrà inviarvi bugfixes o miglioramenti.
+
 
 The end
 =======

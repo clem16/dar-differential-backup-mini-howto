@@ -660,6 +660,20 @@ Ideas para el futuro
      de forma sencilla con programas como rsync_ funcionando por ssh_
      como tarea del cron.
    
+   De hecho, ya hay personas listas que han comenzado a hacer
+   scripts de este estilo para sí mismos y no están asustadas
+   de compartirlos. Para evitar engordar este mini-howto, voy a
+   guardarlos *tal y como son* en mi página web::
+
+      http://gradha.sdf-eu.org/dar_scripts/
+
+   Sientase libre de enviarme sus propias mejoras y las añadiré
+   al directorio.  Ya sea un fichero único o un ``.tar.gz`` con una
+   suite de copias de seguridad completa, por favor añada un fichero
+   simple ``.txt`` que pondré al lado del fichero. Por favor use
+   inglés en su descripción, ¡y no olvide poner su nombre y dirección
+   de correo para que la gente pueda enviarle correcciones o mejoras!
+
 
 El fin
 ======
