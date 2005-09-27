@@ -6,7 +6,7 @@
 :Contact: gradha@titanium.sabren.com
 :Translator: Grzegorz Adam Hankiewicz
 :Date: $Date$
-:Version: H2 ($Rev$ under Subversion_ control)
+:Version: H3 ($Rev$ under Subversion_ control)
 :Web site: http://gradha.sdf-eu.org/textos/backup.es.html
 :Copyright: Este documento está bajo dominio público.
 :Translations: De la página web puede obtener este documento en
