@@ -12,10 +12,14 @@ pdf: $(NAME).en.pdf $(NAME).it.pdf $(NAME).es.pdf
 
 ps: $(NAME).en.ps $(NAME).it.ps $(NAME).es.ps
 
-$(NAME).%.html: source.%.txt
+# Strip svn specific keywords. Besides, they are localised into Spanish.
+mini-howto.%.txt: source.%.txt
+	sed -e "s#\$$Date: \([^(]*\)\(.*\)#\1#;s#\$$Rev: \([0-9]*\) \$$.*#\1)#" $< > $@
+
+$(NAME).%.html: mini-howto.%.txt
 	$(FORMATTER_HTML) $(FORMATTER_HTML_OPTIONS) $< > $@
 
-$(NAME).%.pdf: source.%.tex
+$(NAME).%.pdf: mini-howto.%.tex
 	$(FORMATTER_HTML) $(FORMATTER_HTML_OPTIONS) $< > $@
 
 $(NAME).%.pdf: $(NAME).%.dvi
@@ -24,20 +28,21 @@ $(NAME).%.pdf: $(NAME).%.dvi
 $(NAME).%.dvi: $(NAME).%.tex
 	latex $<
 
-$(NAME).en.tex: source.en.txt
+# We need separate rules for different languages.
+$(NAME).en.tex: mini-howto.en.txt
 	rest2latex --generator --language=en $< > $@
 
-$(NAME).es.tex: source.es.txt
+$(NAME).es.tex: mini-howto.es.txt
 	rest2latex --generator --language=it $< > $@
 
-$(NAME).it.tex: source.it.txt
+$(NAME).it.tex: mini-howto.it.txt
 	rest2latex --generator --language=it $< > $@
 
 clean:
 	$(RM) -f $(NAME).??.html *.bak *.bz2 $(NAME).??.pdf
 	$(RM) -f $(NAME).??.toc $(NAME).??.dvi $(NAME).??.ps
 	$(RM) -f $(NAME).??.aux $(NAME).??.tex $(NAME).??.out
-	$(RM) -f $(NAME).??.log
+	$(RM) -f $(NAME).??.log mini-howto.??.txt
 
 H_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$2}')
 SRC_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$4}')
@@ -47,7 +52,7 @@ dist: all pdf
 	$(RM) -fR dist
 	mkdir dist
 	@# Copy all the interesting files.
-	$(CP) source.*.txt Makefile style.css dist
+	$(CP) mini-howto.*.txt Makefile style.css dist
 	$(CP) Makefile dist
 	@# Now generate a changes log.
 	svn update
