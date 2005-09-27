@@ -5,7 +5,7 @@
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
 :Date: $Date$
-:Version: H3 ($Rev$ under Subversion_ control)
+:Version: H3 ($Rev$)
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 :Translations: From the web site you can get this document in
@@ -19,7 +19,6 @@
 .. _Knoppix: http://www.knoppix.org/
 .. _rsync: http://rsync.samba.org/
 .. _ssh: http://www.openssh.com/
-.. _Subversion: http://subversion.tigris.org/
 .. _tar: http://freshmeat.net/projects/tar/
 .. _Tripwire: http://www.tripwire.org/
 
