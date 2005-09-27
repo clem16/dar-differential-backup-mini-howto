@@ -2,7 +2,7 @@ NAME=dar-differential-backup-mini-howto
 CP=@cp
 RM=rm
 FORMATTER_HTML=rest2html
-FORMATTER_HTML_OPTIONS=--embed-stylesheet --stylesheet-path style.css
+FORMATTER_HTML_OPTIONS=--input-encoding=iso-8859-1 --embed-stylesheet --stylesheet-path style.css
 
 .PHONY: all dist clean
 
