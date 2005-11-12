@@ -45,7 +45,7 @@ clean:
 	$(RM) -f $(NAME).??.log mini-howto.??.txt
 
 H_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$2}')
-SRC_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$4}')
+SRC_VERSION = $(shell ./get_revision.sh)
 BASENAME = $(NAME)-$(H_VERSION)-$(SRC_VERSION)
 
 dist: all pdf
@@ -56,8 +56,8 @@ dist: all pdf
 	$(CP) Makefile dist
 	@# Now generate a changes log.
 	svn update
-	svn log > ChangeLog
-	$(CP) ChangeLog dist
+	svn log > ChangeLog.Repository
+	$(CP) ChangeLog.Repository dist
 	@# Nice. Now package.
 	$(RM) -fR $(BASENAME) $(BASENAME).tar.bz2
 	mv dist $(BASENAME)
