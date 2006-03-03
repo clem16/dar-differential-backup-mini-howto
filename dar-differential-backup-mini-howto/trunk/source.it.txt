@@ -669,12 +669,11 @@ Idee per il futuro
 
      Che può essere riutilizzato anche nella versione differenziale!
    
-   In effetti, qualcuno ha già iniziato a creare qualche script
-   a proprio uso e consumo e non ha problemi a condividerli. Per
-   evitare di "disordinare" questo mini-howto ho intenzione di
-   archiviarli *come sono* nel mio spazio web::
-
-      http://gradha.sdf-eu.org/dar_scripts/
+   In effetti, qualcuno ha già iniziato a creare qualche
+   script a proprio uso e consumo e non ha problemi a
+   condividerli. Per evitare di "disordinare" questo mini-howto
+   ho intenzione di archiviarli *come sono* nel mio spazio web:
+   http://gradha.sdf-eu.org/dar_scripts/.
 
    Sentitevi liberi di inviare i vostri lavori e i vostri
    aggiornamenti e li aggiungerò alla directory. Se avete intenzione

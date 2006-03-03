@@ -640,9 +640,7 @@ Ideas for the future
    In fact, clever people out there have already started making
    such scripts for themselves and are not afraid to share them. To
    avoid cluttering this mini-howto I'm going to store them *as-is*
-   at my web page::
-
-      http://gradha.sdf-eu.org/dar_scripts/
+   at my web page: http://gradha.sdf-eu.org/dar_scripts/.
 
    Feel free to send me your own improvement and I'll add it to
    the directory. Whether you are sending a single script file
