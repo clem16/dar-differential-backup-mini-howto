@@ -1,5 +1,6 @@
 awk
 bootable
+bugfixes
 bz
 Bzip
 cd
@@ -13,14 +14,19 @@ CMD
 cron
 crontab
 dar
+DAR's
+dcf
 Debian
 dev
 esc
 fi
 fileN
+filename
+filenames
 filesystem
 Freshmeat
 FS
+gradha
 gregorio
 Grzegorz
 gz
@@ -32,6 +38,7 @@ killall
 Knoppix
 mkdir
 mnt
+NFS
 ogg
 oldg
 png
@@ -47,6 +54,7 @@ Sep
 stdout
 timestamp
 tmp
+txt
 un
 usr
 YYYY
