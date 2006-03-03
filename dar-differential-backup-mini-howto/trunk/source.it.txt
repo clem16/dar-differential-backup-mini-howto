@@ -5,7 +5,7 @@
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
 :Translator: David Gervasoni
-:Contact: david0@virgilio.it
+:Contact: davidgerva@gmail.com
 :Date: $Date$
 :Version: H3 ($Rev$)
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
@@ -390,13 +390,13 @@ Qualche script per automatizzare i processi
 
       #!/bin/sh
       
-      DIR=/oldg/backup
+      DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
       /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
          -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
          -P mnt -P dev/pts -P proc -P floppy -P burner \
-         -P cdrom > /dev/null
+         -P cdrom -P var/backups > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
@@ -432,12 +432,13 @@ Qualche script per automatizzare i processi
 
       #!/bin/sh
       
-      DIR=/oldg/backup
+      DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_diff
-      PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1|/usr/bin/awk -F '.' '{print $1;}'`
+      PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1`
       /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
          -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp -P mnt \
-         -P dev/pts -P proc -P floppy -P burner -P cdrom -A $PREV > /dev/null
+         -P dev/pts -P proc -P floppy -P burner -P cdrom \
+         -P var/backups -A ${PREV%%.*} > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
@@ -452,17 +453,17 @@ Qualche script per automatizzare i processi
      
    * Di default ``ls`` elenca i file in ordine alfabetico. ``tail``
      è usato per ottenere l'ultimo file con l'opzione ``-n 1``
-     che ordina di mostrare solo l'ultima riga. Di nuovo, l'ultimo
-     filename è rediretto al comando successivo.
+     che ordina di mostrare solo l'ultima riga.
 
    * DAR_ necessita di lavorare con filenames senza il numero
      di slice e senza estensione. Se non correggiamo noi il nome
      del file, DAR_ fermerà il processo e chiederà all'utente se
      effettuare l'operazione in modo automatico o meno. Separiamo
-     quindi il nome del file con ``awk``. Il comando ``awk`` separa
-     le stringhe di testo dai punti e stampa a schermo la prima
-     colonna. Il risultato è il nome base che possiamo passare
-     senza problemi a DAR_.
+     quindi il nome del file con una feature Bash, chiamata
+     parametro d'espansione. Ci sono diverse possibili espansioni,
+     potete digitare ``man bash`` per vederle tutte. Usando ``%%``
+     rimuoviamo la più lunga "coda" di caratteri che si trova dopo il
+     ``%%``. Il risultato è il nome base che vogliamo passare a DAR_.
 
    Ora dobbiamo solo mettere questi due script sotto il controllo
    di cron. Questo è ciò che dobbiamo scrivere dopo il comando
@@ -483,7 +484,7 @@ Qualche script per automatizzare i processi
       #!/bin/sh
       # dar_backup.sh
       
-      DIR=/oldg/backup_gregorio
+      DIR=/var/backups/gregorio
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
       /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gregorio -c $FILE \
@@ -495,12 +496,13 @@ Qualche script per automatizzare i processi
       #!/bin/sh
       # dar_diff.sh
       
-      DIR=/oldg/backup_gregorio
+      DIR=/var/backups/gregorio
       FILE=${DIR}/`/bin/date -I`_diff
-      PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1|/usr/bin/awk -F '.' '{print $1;}'`
+      PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1`
       /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gregorio -c $FILE \
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.zip" \
-         -P instalacion_manual -P Mail/mail_pa_leer -A $PREV > /dev/null
+         -P instalacion_manual -P Mail/mail_pa_leer \
+         -A ${PREV%%.*} > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
 
@@ -572,13 +574,13 @@ Aggiungere dei controlli allo script di backup
 
       #!/bin/sh
       
-      DIR=/oldg/backup
+      DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
       if /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
             -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
             -P mnt -P dev/pts -P proc -P floppy -P burner \
-            -P cdrom > /dev/null ; then
+            -P cdrom -P var/backups > /dev/null ; then
          if /usr/local/bin/dar -t $FILE > /dev/null ; then
             echo "Archive created and successfully tested."
          else
@@ -647,6 +649,25 @@ Idee per il futuro
      fisicamente, ad esempio con la vostra casa, voi avete i vostri
      backup in qualche altro posto. Potrebbe essere fatto facilmente
      con programmi come rsync_ attraverso ssh_ eseguiti tramite cron.
+
+   * Inserimento dei parametri comuni in un file separato da inculdere
+     dallo script utilizzando l'opzione di DAR, -B. Per esempio::
+
+      $ cat > /var/backups/system/common.dcf
+      -m 256 -y -s 600M -D -R / -Z "*.gz" -Z "*.bz2" -Z "*.zip" \
+      -Z "*.png" -P home/gregorio -P tmp -P mnt -P dev/pts \
+      -P proc -P floppy -P burner -P cdrom -P var/backups
+
+     Successivamente si può utilizzare questo nello script::
+
+      DIR=/var/backups/system
+      FILE=${DIR}/`/bin/date -I`_data
+      # Commands
+      /usr/local/bin/dar -B ${DIR}/common.dcf -c $FILE > /dev/null
+      /usr/local/bin/dar -t $FILE > /dev/null
+      /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
+
+     Che può essere riutilizzato anche nella versione differenziale!
    
    In effetti, qualcuno ha già iniziato a creare qualche script
    a proprio uso e consumo e non ha problemi a condividerli. Per
