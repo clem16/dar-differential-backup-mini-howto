@@ -206,7 +206,7 @@ Making a full backup with DAR
    of switches, I'll go on describing the purpose of each of them::
 
       dar -m 256 -y -s 600M -D -R / -c `date -I`_data -Z "*.gz" \
-         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
+         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gradha -P tmp \
          -P mnt -P dev/pts -P proc -P floppy -P burner -P cdrom
 
    * ``-m 256``
@@ -285,7 +285,7 @@ Making a full backup with DAR
    switches you might want to use. And here's the command line I'll
    be running as a plain user inside my home directory::
 
-      dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_data \
+      dar -m 256 -y -s 600M -D -R /home/gradha -c `date -I`_data \
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
          -P instalacion_manual -P Mail/mail_pa_leer
 
@@ -305,7 +305,7 @@ Making differential backups with DAR
    line for a *system* differential backup::
 
       dar -m 256 -y -s 600M -D -R / -c `date -I`_diff -Z "*.gz" \
-         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
+         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gradha -P tmp \
          -P mnt -P dev/pts -P proc -P floppy -P burner -P cdrom \
          -A previous_backup
 
@@ -323,7 +323,7 @@ Making differential backups with DAR
    The user command line is exactly the same. Here it is for
    completeness::
 
-      dar -m 256 -y -s 600M -D -R /home/gregorio -c `date -I`_diff \
+      dar -m 256 -y -s 600M -D -R /home/gradha -c `date -I`_diff \
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
          -P instalacion_manual -P Mail/mail_pa_leer -A previous_backup
 
@@ -362,11 +362,11 @@ Setting up some scripts to automate the process
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
       /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
-         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
+         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gradha -P tmp \
          -P mnt -P dev/pts -P proc -P floppy -P burner \
          -P cdrom -P var/backups > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
-      /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
+      /usr/bin/find $DIR -type f -exec chown .gradha \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
 
    Some things to notice:
@@ -404,11 +404,11 @@ Setting up some scripts to automate the process
       FILE=${DIR}/`/bin/date -I`_diff
       PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1`
       /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
-         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp -P mnt \
+         -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gradha -P tmp -P mnt \
          -P dev/pts -P proc -P floppy -P burner -P cdrom \
          -P var/backups -A ${PREV%%.*} > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
-      /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
+      /usr/bin/find $DIR -type f -exec chown .gradha \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
 
    The only two changes are the addition of the ``-A`` switch and
@@ -451,10 +451,10 @@ Setting up some scripts to automate the process
       #!/bin/sh
       # dar_backup.sh
       
-      DIR=/var/backups/gregorio
+      DIR=/var/backups/gradha
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
-      /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gregorio -c $FILE \
+      /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gradha -c $FILE \
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
          -P instalacion_manual -P Mail/mail_pa_leer > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
@@ -463,10 +463,10 @@ Setting up some scripts to automate the process
       #!/bin/sh
       # dar_diff.sh
       
-      DIR=/var/backups/gregorio
+      DIR=/var/backups/gradha
       FILE=${DIR}/`/bin/date -I`_diff
       PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1`
-      /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gregorio -c $FILE \
+      /usr/local/bin/dar -m 256 -y -s 600M -D -R /home/gradha -c $FILE \
          -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.zip" \
          -P instalacion_manual -P Mail/mail_pa_leer \
          -A ${PREV%%.*} > /dev/null
@@ -543,7 +543,7 @@ Adding checks to the backup scripts
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
       if /usr/local/bin/dar -m 256 -y -s 600M -D -R / -c $FILE -Z "*.gz" \
-            -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gregorio -P tmp \
+            -Z "*.bz2" -Z "*.zip" -Z "*.png" -P home/gradha -P tmp \
             -P mnt -P dev/pts -P proc -P floppy -P burner \
             -P cdrom -P var/backups > /dev/null ; then
          if /usr/local/bin/dar -t $FILE > /dev/null ; then
@@ -554,7 +554,7 @@ Adding checks to the backup scripts
       else
          echo "Archive creating FAILED."
       fi
-      /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
+      /usr/bin/find $DIR -type f -exec chown .gradha \{\} \;
       /usr/bin/find $DIR -type f -exec chmod 440 \{\} \;
 
    You can test this version easily running the script and killing
@@ -623,7 +623,7 @@ Ideas for the future
 
       $ cat > /var/backups/system/common.dcf
       -m 256 -y -s 600M -D -R / -Z "*.gz" -Z "*.bz2" -Z "*.zip" \
-      -Z "*.png" -P home/gregorio -P tmp -P mnt -P dev/pts \
+      -Z "*.png" -P home/gradha -P tmp -P mnt -P dev/pts \
       -P proc -P floppy -P burner -P cdrom -P var/backups
 
      Later on you could use this in the script::
@@ -633,7 +633,7 @@ Ideas for the future
       # Commands
       /usr/local/bin/dar -B ${DIR}/common.dcf -c $FILE > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
-      /usr/bin/find $DIR -type f -exec chown .gregorio \{\} \;
+      /usr/bin/find $DIR -type f -exec chown .gradha \{\} \;
 
      Which you can reuse in the differential version too!
 
