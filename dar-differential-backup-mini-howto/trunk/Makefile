@@ -65,6 +65,9 @@ dist: all pdf
 	$(RM) -fR $(BASENAME)
 	-mkdir ~/release
 	mv $(NAME).??.pdf $(NAME).??.html $(BASENAME).tar.bz2 ~/release
+	@for file in ~/release/*.??.html; do \
+		sed -e "s#@#@@#g" $$file > $${file%html}htm && rm $$file; \
+	done
 	@echo Files in ~/release. Now update your web page!
 
 add_words:
