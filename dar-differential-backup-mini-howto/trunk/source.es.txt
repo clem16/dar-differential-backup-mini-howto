@@ -679,7 +679,7 @@ Ideas para el futuro
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chown .gradha \{\} \;
 
-     ¡Que también puede reusar en la versión diferencial también!
+     ¡Que también puede reusar en la versión diferencial!
 
    De hecho, ya hay personas listas que han comenzado a hacer
    scripts de este estilo para sí mismos y no están asustadas
