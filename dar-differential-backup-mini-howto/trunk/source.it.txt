@@ -95,11 +95,11 @@ Utilizzo essenziale di DAR
    cartella della vostra directory /home. Dovrete scrivere qualcosa
    di simile a questo::
 
-      dar -c backup_file_without_extension file1 file2 ... fileN
+      dar -c backup_file_without_extension -g file1 -g file2 ... -g fileN
 
    L'output dovrebbe essere simile al seguente::
 
-      $ dar -c my_backup_file safecopy.py/ translate_chars.py/
+      $ dar -c my_backup_file -g safecopy.py/ -g translate_chars.py/
       
       
        --------------------------------------------

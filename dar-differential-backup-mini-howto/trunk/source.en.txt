@@ -84,11 +84,11 @@ Simple DAR usage
    of it, imagine that you want to backup one folder of your home
    directory. You would write something like this::
 
-      dar -c backup_file_without_extension file1 file2 ... fileN
+      dar -c backup_file_without_extension -g file1 -g file2 ... -g fileN
 
    The output should be similar to the following::
 
-      $ dar -c my_backup_file safecopy.py/ translate_chars.py/
+      $ dar -c my_backup_file -g safecopy.py/ -g translate_chars.py/
       
       
        --------------------------------------------

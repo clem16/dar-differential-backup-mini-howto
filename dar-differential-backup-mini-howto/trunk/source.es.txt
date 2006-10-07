@@ -93,11 +93,11 @@ Uso simple de DAR
    realizar una copia de seguridad de su directorio home. Escribiría
    algo así::
 
-      dar -c fichero_sin_extension file1 file2 ... fileN
+      dar -c fichero_sin_extension -g file1 -g file2 ... -g fileN
 
    La salida debería ser similar a esto::
 
-      $ dar -c mi_copia safecopy.py/ translate_chars.py/
+      $ dar -c mi_copia -g safecopy.py/ -g translate_chars.py/
       
       
        --------------------------------------------
