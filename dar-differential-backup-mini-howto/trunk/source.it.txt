@@ -37,7 +37,7 @@ Introduzione
    cercato quindi su Freshmeat_ qualche programma per la creazione di
    backup che supportasse anche la creazione di backup differenziali
    e ho trovato DAR_.
-   
+
    Fare un backup completo (o base) significa salvare tutti i files
    che ricadono sotto le cartelle interessate dalla politica di
    backup. Un backup differenziale o incrementale conterrà invece
@@ -64,7 +64,7 @@ Introduzione
    Knoppix_ bootable e ho recuperato l'esatto stato della mia
    vecchia installazione Debian in poche ore. Senza modifiche,
    senza alcuna ulteriore installazione e senza perdere alcun file.
-   
+
    Questo documento è stato scritto usando la versione 1.3.0 di DAR_.
    Quando sono passato alla 2.0.3 tutto funzionava. Non ho nemmeno
    dovuto aggiornare i miei backup. Quindi sembra che l'interfaccia
@@ -77,8 +77,8 @@ Introduzione
    Per questa versione del testo ho usato reStructuredText (ecco
    spiegato il misterioso markup nella versione txt). Vedi
    http://docutils.sourceforge.net/ per maggiori informazioni.
-   
-   
+
+
 Utilizzo essenziale di DAR
 ==========================
 
@@ -100,8 +100,8 @@ Utilizzo essenziale di DAR
    L'output dovrebbe essere simile al seguente::
 
       $ dar -c my_backup_file -g safecopy.py/ -g translate_chars.py/
-      
-      
+
+
        --------------------------------------------
        15 inode(s) saved
        with 0 hard link(s) recorded
@@ -125,7 +125,7 @@ Utilizzo essenziale di DAR
    vostre directory sono più grandi della capacità del CD ROM,
    potete chiedere a DAR_ di dividere l'archivio in tanti files
    che potrete poi memorizzare su diverse unità.
-   
+
    Volete recuperare questo backup? Scrivete semplicemente
    i seguenti comandi::
 
@@ -135,8 +135,8 @@ Utilizzo essenziale di DAR
       file ownership will not be restored as dar is not run as root.
       to avoid this message use -O option [return = OK | esc = cancel]
       Continuing...
-      
-      
+
+
        --------------------------------------------
        15 file(s) restored
        0 file(s) not restored (not saved in archive)
@@ -148,7 +148,7 @@ Utilizzo essenziale di DAR
        Total number of file considered: 15
       $ ls
       safecopy.py/  translate_chars.py/
-      
+
 
 La politica di backup
 =====================
@@ -206,7 +206,7 @@ La politica di backup
    includete/escludete questa o quella directory.  Può essere utile
    ciò se tornate ad utilizzare il computer dopo molto tempo e
    volete sapere il perchè di ogni opzione.
-   
+
    La mia configurazione fa partire il programma DAR_ con una script
    shell richiamato periodicamente da cron (`Qualche script per
    automatizzare i processi`_), così non devo digitare ogni volta
@@ -237,7 +237,7 @@ Eseguire backup di base (full backup) con DAR
       di configurazione che stanno sotto ``/etc/`` e ``/home``. Come
       potete notare questa è un'opzione assolutamente facoltativa,
       quasi un "capriccio".
-      
+
    * ``-y [level]``
       Questa opzione attiva la compressione Bzip2_ che di default non
       è attiva. Potete anche specificare un livello di compressione
@@ -247,7 +247,7 @@ Eseguire backup di base (full backup) con DAR
       velocità/compressione per la maggior parte dei file.
       Personalmente non specifico il livello di compressione,
       6 mi va più che bene.
-      
+
    * ``-s 600M``
       Ecco quà l'opzione di DAR_ che vi permette di definire la
       dimensione dei file di backup o, meglio, delle slice. La
@@ -261,7 +261,7 @@ Eseguire backup di base (full backup) con DAR
       per tranquillità, nel caso i file diventassero più grandi. Se
       pensate che questa opzione possa esservi utile potete leggere
       il manuale di dar per saperne di più.
-      
+
    * ``-D``
       Memorizza il nome e il percorso delle directory escluse
       dall'opzione ``-P`` o che non ci sono fra quelle specificate
@@ -321,7 +321,7 @@ Eseguire backup di base (full backup) con DAR
    sono identici a quelli 'di cui sopra', ho solo cambiato il nome
    delle directories che voglio escludere utilizzando l'opzione
    ``-P`` e la directory radice con l'opzione ``-R``.
-   
+
 
 Eseguire backup differenziali con DAR
 =====================================
@@ -373,12 +373,12 @@ Eseguire backup differenziali con DAR
    Successivamente potete usare questo file con l'opzione ``-A``,
    in questo modo DAR_ lavorerà come se il file del backup base
    fosse quello.
-   
+
    Questo può essere anche utile se usate le slices perchè
    il *catalogo* è creato per la prima e l'ultima slice. E' più
    semplice passare al comando un singolo file piuttosto che dover
    utilizzare tutti i dischi del vostro precedente backup.
-   
+
 
 Qualche script per automatizzare i processi
 ===========================================
@@ -389,7 +389,7 @@ Qualche script per automatizzare i processi
    ``/root/dar_backup.sh``::
 
       #!/bin/sh
-      
+
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
@@ -412,12 +412,12 @@ Qualche script per automatizzare i processi
      è potenzialmente un rischio in ambito di sicurezza. Idealmente
      dovreste compilare DAR_ come root e mantenere i binari dove li
      avete creati, così nessuno potrà toccarli o eseguirvi Tripwire_.
-     
+
    * DAR_ genera statistiche dopo ogni esecuzione. A noi non servono
      se eseguite in cron perchè produrrebbero solo mail inutili.
      Lo ``stdout`` è rediretto a ``/dev/null``. Gli errori saranno
      invece riportati in una mail nel caso qualcosa andasse storto.
-     
+
    * Gli ultimi due comandi ``find`` sono opzionali. Li uso per
      cambiare i permessi dei file per un normale utente che creerà
      successivamente i backup. Un ulteriore rischio in fatto di
@@ -431,7 +431,7 @@ Qualche script per automatizzare i processi
    quasi identico al precedente, sotto ``/root/dar_diff.sh``::
 
       #!/bin/sh
-      
+
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_diff
       PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1`
@@ -450,7 +450,7 @@ Qualche script per automatizzare i processi
    * Prima di tutto, il comando ``ls`` crea una lista dei file
      con estensione ``.dar`` presenti nella directory di backup;
      euesto output è rediretto al comando successivo.
-     
+
    * Di default ``ls`` elenca i file in ordine alfabetico. ``tail``
      è usato per ottenere l'ultimo file con l'opzione ``-n 1``
      che ordina di mostrare solo l'ultima riga.
@@ -477,13 +477,13 @@ Qualche script per automatizzare i processi
    15 minuti dopo la mezzanotte. ``dar_backup.sh`` verrà eseguito
    solo il primo giorno del mese. L'altro script verrà eseguito
    tutti gli altri giorni.
-   
+
    Ecco quì gli scripts di backup per i vostri utenti. Essi sono
    identici, cambiano solo alcune opzioni di DAR_ e i percorsi::
 
       #!/bin/sh
       # dar_backup.sh
-      
+
       DIR=/var/backups/gradha
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
@@ -492,10 +492,10 @@ Qualche script per automatizzare i processi
          -P instalacion_manual -P Mail/mail_pa_leer > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
-      
+
       #!/bin/sh
       # dar_diff.sh
-      
+
       DIR=/var/backups/gradha
       FILE=${DIR}/`/bin/date -I`_diff
       PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1`
@@ -508,7 +508,7 @@ Qualche script per automatizzare i processi
 
    Non dimenticate di aggiungere a crontab le stringhe richieste
    per i votri utenti.
-      
+
 
 Estrarre i backup su macchine vuote
 ===================================
@@ -535,9 +535,9 @@ Estrarre i backup su macchine vuote
          echo "All done."
       else
          echo "Not enough parameters.
-      
+
       Usa: script dar_location base_full_backup directory
-      
+
       Dove dar_location è un percorso alla directory con i binari di dar,
       base_full_backup è una data in formato 'YYYY-MM-DD' e directory è
       il posto dove volete mettere i file recuperati, solitamente '/'
@@ -573,7 +573,7 @@ Aggiungere dei controlli allo script di backup
    comandi sono eseguiti::
 
       #!/bin/sh
-      
+
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
@@ -616,7 +616,7 @@ Aggiungere dei controlli allo script di backup
    sono messi e sposta in una directory definitiva i file con
    ``*.valid`` eliminando quelli la cui ultima modifica è precedente
    a un'ora.
-      
+
 
 Idee per il futuro
 ==================
@@ -668,7 +668,7 @@ Idee per il futuro
       /usr/bin/find $DIR -type f -exec chown .gradha \{\} \;
 
      Che può essere riutilizzato anche nella versione differenziale!
-   
+
    In effetti, qualcuno ha già iniziato a creare qualche
    script a proprio uso e consumo e non ha problemi a
    condividerli. Per evitare di "disordinare" questo mini-howto
@@ -697,7 +697,7 @@ The end
    più semplice la versione nella loro lingua. Dovreste raggiungere
    facilmente il codice di questo dodumento alla mia home page
    (link `at the beginning of the document`__).
-   
+
 __ `DAR differential backup mini-howto -IT-`_
 
    Enjoy!

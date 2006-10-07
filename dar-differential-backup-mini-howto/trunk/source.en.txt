@@ -89,8 +89,8 @@ Simple DAR usage
    The output should be similar to the following::
 
       $ dar -c my_backup_file -g safecopy.py/ -g translate_chars.py/
-      
-      
+
+
        --------------------------------------------
        15 inode(s) saved
        with 0 hard link(s) recorded
@@ -123,8 +123,8 @@ Simple DAR usage
       file ownership will not be restored as dar is not run as root.
       to avoid this message use -O option [return = OK | esc = cancel]
       Continuing...
-      
-      
+
+
        --------------------------------------------
        15 file(s) restored
        0 file(s) not restored (not saved in archive)
@@ -136,7 +136,7 @@ Simple DAR usage
        Total number of file considered: 15
       $ ls
       safecopy.py/  translate_chars.py/
-      
+
 
 The backup strategy
 ===================
@@ -217,7 +217,7 @@ Making a full backup with DAR
       work better for all those little configuration files lying
       under ``/etc/`` and ``/home``. As you see this is a totally
       optional switch, basically for tuning freaks like me.
-      
+
    * ``-y [level]``
       This option activates Bzip2_ archive compression, which
       by default is turned off.  You can even specify a numeric
@@ -357,7 +357,7 @@ Setting up some scripts to automate the process
    backup under ``/root/dar_backup.sh``::
 
       #!/bin/sh
-      
+
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
@@ -399,7 +399,7 @@ Setting up some scripts to automate the process
    backups under ``/root/dar_diff.sh``::
 
       #!/bin/sh
-      
+
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_diff
       PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1`
@@ -450,7 +450,7 @@ Setting up some scripts to automate the process
 
       #!/bin/sh
       # dar_backup.sh
-      
+
       DIR=/var/backups/gradha
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
@@ -459,10 +459,10 @@ Setting up some scripts to automate the process
          -P instalacion_manual -P Mail/mail_pa_leer > /dev/null
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
-      
+
       #!/bin/sh
       # dar_diff.sh
-      
+
       DIR=/var/backups/gradha
       FILE=${DIR}/`/bin/date -I`_diff
       PREV=`/bin/ls $DIR/*.dar|/usr/bin/tail -n 1`
@@ -475,7 +475,7 @@ Setting up some scripts to automate the process
 
    Don't forget to add the required crontab entries for your user
    pointing to the appropriate path.
-      
+
 
 Recovering your backup to a clean machine
 =========================================
@@ -502,9 +502,9 @@ Recovering your backup to a clean machine
          echo "All done."
       else
          echo "Not enough parameters.
-      
+
       Usage: script dar_location base_full_backup directory
-      
+
       Where dar_location is a path to a working dar binary, base_full_backup
       is a date in the format 'YYYY-MM-DD', and directory is the place where
       you want to put the restored data, usually '/' when run as root."
@@ -538,7 +538,7 @@ Adding checks to the backup scripts
    executed::
 
       #!/bin/sh
-      
+
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
       # Commands
@@ -584,7 +584,7 @@ Adding checks to the backup scripts
    backup directory those archives which have a ``*.valid`` file,
    deleting all other whose last modification timestamp is older
    than one hour.
-   
+
 
 Ideas for the future
 ====================
