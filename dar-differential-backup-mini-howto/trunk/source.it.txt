@@ -7,7 +7,7 @@
 :Translator: David Gervasoni
 :Contact: davidgerva@gmail.com
 :Date: $Date$
-:Version: H4 ($Rev$)
+:Version: H5 ($Rev$)
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 :Translations: From the web site you can get this document in
