@@ -5,7 +5,7 @@
 :Author: Grzegorz Adam Hankiewicz
 :Contact: dar@gradha.imap.cc
 :Date: 2012-12-19
-:Web site: http://gradha.sdf-eu.org/textos/backup.en.html
+:Web site: http://gradha.github.com/dar-differential-backup-mini-howto/
 :Copyright: This document has been placed in the public domain.
 :Translations: From the web site you can get this document in
                English, Italian and Spanish.
