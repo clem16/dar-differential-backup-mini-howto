@@ -683,7 +683,8 @@ Ideas para el futuro
    De hecho, hay personas listas que han comenzado a hacer scripts
    de este estilo para sí mismas y no les asusta compartirlos. Para
    evitar engordar este mini-howto, voy a guardarlos *tal y como son*
-   en mi página web: http://gradha.sdf-eu.org/dar_scripts/.
+   en mi página web:
+   https://github.com/gradha/dar-differential-backup-mini-howto/tree/master/contrib.
 
    Sientase libre de enviarme sus propias mejoras y las añadiré
    al directorio.  Ya sea un fichero único o un ``.tar.gz`` con una

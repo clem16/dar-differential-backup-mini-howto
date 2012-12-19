@@ -1,0 +1,22 @@
+Author: Meikel Bisping
+
+Email: info@mbisping.de
+
+Description: Mikel likes to perform dar operations over the network
+to a server.
+
+- make full backup directly over network (slice not possible)
+dar -m 256 -y  -D -R /home/me -c -\
+  -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" \
+| ssh user@myserver "cat > /home/me/bak.1.dar"
+
+- create catalogue directly on server from home computer
+ssh me@myserver "dar --no-warn -A /home/me -C /home/me/catalogue"
+
+- copy catalgoue to home computer
+
+- create diff using catalogue (on home computer only, haven't
+figured out, how to do it directly over network)
+
+dar -m 256 -y -D -R /home/me -c me`date -I`_diff \
+  -Z "*.gz" -Z "*.bz2" -Z "*.zip" -Z "*.png" -A catalogue

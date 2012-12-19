@@ -637,9 +637,10 @@ Ideas for the future
      Which you can reuse in the differential version too!
 
    In fact, clever people out there have already started making
-   such scripts for themselves and are not afraid to share them. To
-   avoid cluttering this mini-howto I'm going to store them *as-is*
-   at my web page: http://gradha.sdf-eu.org/dar_scripts/.
+   such scripts for themselves and are not afraid to share them.
+   To avoid cluttering this mini-howto I'm going to store them
+   *as-is* at my web page:
+   https://github.com/gradha/dar-differential-backup-mini-howto/tree/master/contrib.
 
    Feel free to send me your own improvement and I'll add it to
    the directory. Whether you are sending a single script file

@@ -61,6 +61,7 @@ dist: all pdf
 	@# Now generate a changes log.
 	git log > ChangeLog.Repository
 	$(CP) ChangeLog.Repository dist
+	$(CP) -r contrib dist
 	@# Nice. Now package.
 	$(RM) -fR $(BASENAME) $(TARFILE)
 	mv dist $(BASENAME)

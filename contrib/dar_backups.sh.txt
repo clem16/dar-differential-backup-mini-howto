@@ -1,0 +1,11 @@
+Authors: Roi Rodriguez & Mauro Silvosa (Cluster Digital S.L.)
+
+Email: roi@clusterdigital.com
+
+Description: This is a script to be runned from cron which backups
+data and stores it locally and optionally remotely using scp. It
+decides between doing a master or an incremental backup based on
+the existance or not of the master one for the actual month. The
+remote copy feature needs a ssh authentication method which doesn't
+prompt for a password, in order to make it non-interactive (useful
+for cron, if you plan to run it by hand this is not necessary).

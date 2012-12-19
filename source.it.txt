@@ -672,7 +672,7 @@ Idee per il futuro
    script a proprio uso e consumo e non ha problemi a
    condividerli. Per evitare di "disordinare" questo mini-howto
    ho intenzione di archiviarli *come sono* nel mio spazio web:
-   http://gradha.sdf-eu.org/dar_scripts/.
+   https://github.com/gradha/dar-differential-backup-mini-howto/tree/master/contrib.
 
    Sentitevi liberi di inviare i vostri lavori e i vostri
    aggiornamenti e li aggiungerò alla directory. Se avete intenzione
