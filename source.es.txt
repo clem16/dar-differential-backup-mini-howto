@@ -6,7 +6,6 @@
 :Contact: dar@gradha.imap.cc
 :Translator: Grzegorz Adam Hankiewicz
 :Date: 2012-12-19
-:Version: 6
 :Web site: http://gradha.sdf-eu.org/textos/backup.es.html
 :Copyright: Este documento está bajo dominio público.
 :Translations: De la página web puede obtener este documento en
