@@ -4,8 +4,8 @@
 
 :Author: Grzegorz Adam Hankiewicz
 :Contact: gradha@titanium.sabren.com
-:Date: $Date$
-:Version: H5 ($Rev$)
+:Date: 2012-12-19
+:Version: 6
 :Web site: http://gradha.sdf-eu.org/textos/backup.en.html
 :Copyright: This document has been placed in the public domain.
 :Translations: From the web site you can get this document in
