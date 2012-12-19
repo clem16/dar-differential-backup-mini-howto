@@ -3,7 +3,7 @@
 =========================================
 
 :Author: Grzegorz Adam Hankiewicz
-:Contact: gradha@titanium.sabren.com
+:Contact: dar@gradha.imap.cc
 :Translator: Grzegorz Adam Hankiewicz
 :Date: 2012-12-19
 :Version: 6
