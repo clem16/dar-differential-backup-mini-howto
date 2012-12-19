@@ -1,0 +1,13 @@
+*.diff
+*.swp
+ChangeLog.Repository
+dar-differential-backup-mini-howto.??.aux
+dar-differential-backup-mini-howto.??.html
+dar-differential-backup-mini-howto.??.log
+dar-differential-backup-mini-howto.??.out
+dar-differential-backup-mini-howto.??.pdf
+dar-differential-backup-mini-howto.??.tex
+dar-differential-backup-mini-howto.??.toc
+mini-howto.??.txt
+missfont.log
+release/
