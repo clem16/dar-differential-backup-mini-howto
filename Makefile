@@ -45,9 +45,12 @@ clean:
 	$(RM) -f $(NAME).??.aux $(NAME).??.tex $(NAME).??.out
 	$(RM) -f $(NAME).??.log mini-howto.??.txt
 
-H_VERSION = $(shell grep Rev: source.en.txt | awk '{print $$2}')
+H_VERSION = $(shell grep :Date: source.en.txt | awk '{print $$2}')
 SRC_VERSION = $(shell ./get_revision.sh)
-BASENAME = $(NAME)-$(H_VERSION)-$(SRC_VERSION)
+#BASENAME = $(NAME)-$(H_VERSION)-$(SRC_VERSION)
+BASENAME = $(NAME)-$(H_VERSION)
+TARFILE = $(BASENAME).tar.bz2
+RELEASE = release
 
 dist: all pdf
 	$(RM) -fR dist
@@ -56,20 +59,15 @@ dist: all pdf
 	$(CP) mini-howto.*.txt Makefile style.css dist
 	$(CP) Makefile dist
 	@# Now generate a changes log.
-	svn update
-	svn log > ChangeLog.Repository
+	git log > ChangeLog.Repository
 	$(CP) ChangeLog.Repository dist
 	@# Nice. Now package.
-	$(RM) -fR $(BASENAME) $(BASENAME).tar.bz2
+	$(RM) -fR $(BASENAME) $(TARFILE)
 	mv dist $(BASENAME)
-	arcdir -t tar.bz2 $(BASENAME)
+	tar -cvjf $(TARFILE) $(BASENAME)
 	$(RM) -fR $(BASENAME)
-	-mkdir ~/release
-	mv $(NAME).??.pdf $(NAME).??.html $(BASENAME).tar.bz2 ~/release
-	@for file in ~/release/*.??.html; do \
-		sed -e "s#@#@@#g" $$file > $${file%html}htm && rm $$file; \
-	done
-	@echo Files in ~/release. Now update your web page!
+	-mkdir $(RELEASE)
+	mv $(NAME).??.pdf $(NAME).??.html $(BASENAME).tar.bz2 $(RELEASE)
 
 add_words:
 	cat source.en.txt |aspell list --lang=en |sort|uniq> tmp.txt
