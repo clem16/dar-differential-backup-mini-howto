@@ -2,6 +2,7 @@ NAME=dar-differential-backup-mini-howto
 CP=@cp
 RM=rm
 FORMATTER_HTML=rst2html.py
+FORMATTER_LATEX=rst2latex.py
 FORMATTER_HTML_OPTIONS=--input-encoding=iso-8859-1 --embed-stylesheet --stylesheet-path style.css
 
 .PHONY: all dist clean
@@ -30,13 +31,13 @@ $(NAME).%.dvi: $(NAME).%.tex
 
 # We need separate rules for different languages.
 $(NAME).en.tex: mini-howto.en.txt
-	rest2latex --generator --language=en $< > $@
+	$(FORMATTER_LATEX) --generator --language=en $< > $@
 
 $(NAME).es.tex: mini-howto.es.txt
-	rest2latex --generator --language=it $< > $@
+	$(FORMATTER_LATEX) --generator --language=it $< > $@
 
 $(NAME).it.tex: mini-howto.it.txt
-	rest2latex --generator --language=it $< > $@
+	$(FORMATTER_LATEX) --generator --language=it $< > $@
 
 clean:
 	$(RM) -f $(NAME).??.html *.bak *.bz2 $(NAME).??.pdf
