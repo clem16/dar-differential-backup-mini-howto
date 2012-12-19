@@ -1,5 +1,5 @@
 #!/bin/sh
 
-export LANG="en_GB"
-svn update > /dev/null
-svn update | sed -e "s#At revision \(.\+\).#\1#"
+# Gets the iso day, then appends the unix timestamp.
+GITDATE=`git log -1 --format=%ci`
+echo ${GITDATE:0:10}-`git log -1 --format=%ct`
