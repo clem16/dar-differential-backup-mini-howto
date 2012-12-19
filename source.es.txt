@@ -386,7 +386,7 @@ Configurando algunos scripts para automatizar el proceso
    script ejecutable para copias de seguridad de *sistema* bajo
    ``/root/dar_backup.sh``::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
@@ -430,7 +430,7 @@ Configurando algunos scripts para automatizar el proceso
    Ahora ponga el siguiente script casi idéntico para copias de
    seguridad diferenciales en ``/root/dar_diff.sh``::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_diff
@@ -483,7 +483,7 @@ Configurando algunos scripts para automatizar el proceso
    Son iguales, cambiando únicamente los parámetros del comando DAR_
    y algunas rutas::
 
-      #!/bin/sh
+      #!/bin/bash
       # dar_backup.sh
 
       DIR=/var/backups/gradha
@@ -495,7 +495,7 @@ Configurando algunos scripts para automatizar el proceso
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
 
-      #!/bin/sh
+      #!/bin/bash
       # dar_diff.sh
 
       DIR=/var/backups/gradha
@@ -526,7 +526,7 @@ Recuperando su copia de seguridad desde cero
    otro script que puede guardar junto con sus ficheros de copia
    de seguridad::
 
-      #!/bin/sh
+      #!/bin/bash
 
       if [ -n "$3" ]; then
          CMD="$1"
@@ -576,7 +576,7 @@ Añadiendo verificaciones a los scripts
    está probando los scripts de forma interactiva y quiere saber
    qué comandos están siendo ejecutados::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data

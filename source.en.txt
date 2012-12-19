@@ -356,7 +356,7 @@ Setting up some scripts to automate the process
    under cron.  Place the following executable script for *system*
    backup under ``/root/dar_backup.sh``::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
@@ -398,7 +398,7 @@ Setting up some scripts to automate the process
    Now place the following nearly identical script for differential
    backups under ``/root/dar_diff.sh``::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_diff
@@ -448,7 +448,7 @@ Setting up some scripts to automate the process
    Here are the backup scripts for your users. They are the same,
    changing only switches to the DAR_ command and paths::
 
-      #!/bin/sh
+      #!/bin/bash
       # dar_backup.sh
 
       DIR=/var/backups/gradha
@@ -460,7 +460,7 @@ Setting up some scripts to automate the process
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
 
-      #!/bin/sh
+      #!/bin/bash
       # dar_diff.sh
 
       DIR=/var/backups/gradha
@@ -489,7 +489,7 @@ Recovering your backup to a clean machine
    be boring, so here's another shell script you can save with your
    backup files::
 
-      #!/bin/sh
+      #!/bin/bash
 
       if [ -n "$3" ]; then
          CMD="$1"
@@ -537,7 +537,7 @@ Adding checks to the backup scripts
    the scripts interactively and want to know which commands are
    executed::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data

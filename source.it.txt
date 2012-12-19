@@ -388,7 +388,7 @@ Qualche script per automatizzare i processi
    script eseguibile per il backup del *sistema* sotto
    ``/root/dar_backup.sh``::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
@@ -430,7 +430,7 @@ Qualche script per automatizzare i processi
    Ora ponete il seguente script per i backup differenziali,
    quasi identico al precedente, sotto ``/root/dar_diff.sh``::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_diff
@@ -481,7 +481,7 @@ Qualche script per automatizzare i processi
    Ecco quì gli scripts di backup per i vostri utenti. Essi sono
    identici, cambiano solo alcune opzioni di DAR_ e i percorsi::
 
-      #!/bin/sh
+      #!/bin/bash
       # dar_backup.sh
 
       DIR=/var/backups/gradha
@@ -493,7 +493,7 @@ Qualche script per automatizzare i processi
       /usr/local/bin/dar -t $FILE > /dev/null
       /usr/bin/find $DIR -type f -exec chmod 400 \{\} \;
 
-      #!/bin/sh
+      #!/bin/bash
       # dar_diff.sh
 
       DIR=/var/backups/gradha
@@ -522,7 +522,7 @@ Estrarre i backup su macchine vuote
    quelli differenziali. Questo può essere noioso, così ecco quà
    un'altro script che potete salvare fra i vostri file di backup::
 
-      #!/bin/sh
+      #!/bin/bash
 
       if [ -n "$3" ]; then
          CMD="$1"
@@ -572,7 +572,7 @@ Aggiungere dei controlli allo script di backup
    verificando il funzionamento dello script e volete sapere quali
    comandi sono eseguiti::
 
-      #!/bin/sh
+      #!/bin/bash
 
       DIR=/var/backups/system
       FILE=${DIR}/`/bin/date -I`_data
